@@ -1,73 +1,113 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <link href="../../../resources/css/login.css" rel="stylesheet" type="text/css"/>
-    <title>Login Form</title>
+	<meta charset="ISO-8859-1">
+	<title>Login</title>
+	<jsp:include page="../../head.html" />
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/login.css">
 </head>
 <body>
-<div id="logreg-forms">
-    <form class="form-signin" action="login" method="post">
-        <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Sign in</h1>
-        <p class="text-danger">msg-err</p>
+<main>
+<!-- Forgot password -->
+<!-- 
+	<div class="form-container">
+      <div class="logo-container">
+        Forgot Password
+      </div>
 
-        <input name="user"  type="text" id="inputEmail" class="form-control" placeholder="Username" required="" autofocus="">
-        <input name="pass"  type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
-
-        <div class="form-group form-check">
-            <input name="remember" value="1" type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Remember me</label>
+      <form class="form">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="text" id="email" name="email" placeholder="Enter your email" required="">
         </div>
 
-        <button class="btn btn-success btn-block" type="submit"><i class="fas fa-sign-in-alt"></i> Sign in</button>
-        <hr>
-        <button class="btn btn-primary btn-block" type="button" id="btn-signup"><i class="fas fa-user-plus"></i> Sign up New Account</button>
-    </form>
+        <button class="form-submit-btn" type="submit">Send Email</button>
+      </form>
 
-    <form action="signup" method="post" class="form-signup">
-        <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Sign up</h1>
-        <input name="user" type="text" id="user-name" class="form-control" placeholder="User name" required="" autofocus="">
-        <input name="pass" type="password" id="user-pass" class="form-control" placeholder="Password" required autofocus="">
-        <input name="repass" type="password" id="user-repeatpass" class="form-control" placeholder="Repeat Password" required autofocus="">
+      <p class="signup-link">
+        Don't have an account?
+        <a href="#" class="signup-link link"> Sign up now</a>
+      </p>
+    </div>
+-->
+<!-- Login form -->
+	<div class="form-container">
+	<div class="login-form col-5">
+		<div class="logo-container">
+        LOGIN USING YOUR ACCOUNT
+      </div>
 
-        <button class="btn btn-primary btn-block" type="submit"><i class="fas fa-user-plus"></i> Sign Up</button>
-        <a href="#" id="cancel_signup"><i class="fas fa-angle-left"></i> Back</a>
-    </form>
-    <br>
+      <form class="form" action="" method="post">
+        <div class="form-group">
+          <input type="text" id="loginEmail" name="loginEmail" placeholder="your email address" required>
+        </div>
+        <div class="form-group">
+          <input type="text" id="loginPassword" name="loginPassword" placeholder="password" required>
+        </div>
 
+      <p class="signup-link">
+        Don't have an account?
+        <a href="#" class="signup-link link"> Forgot your password?(???)</a>
+      </p>
+      	<button class="btn-fill" id="btn-fill" onclick="fillAccount()">fill account</button>
+        <button class="form-submit-btn" type="submit">Login</button>
+      </form>
+	</div>
+      
+	<div class="register-form col-5">
+		<div class="logo-container">
+        	NOT A MEMBER YET?
+      </div>
+
+      <form class="form" action="" method="post">
+        <div class="form-group">
+          <input type="text" id="name" name="name" placeholder="your name" required>
+        </div>
+        <div class="form-group">
+          <input type="email" id="registerEmail" name="registerEmail" placeholder="your email address" required>
+        </div>
+        <div class="form-group">
+          <input type="text" id="phone" name="phone" placeholder="your phone number" required>
+        </div>
+        <div class="form-group">
+          <input type="password" id="registerPassword" name="registerPassword" placeholder="password" required>
+        </div>
+        <div class="form-group">
+          <input type="password" id="confirmPassword" name="confirmPassword" placeholder="confirm password" required>
+        </div>
+        <div class="">
+          <input type="radio" id="role1" name="role" value="rent">I want to rent a car
+          <input type="radio" id="role2" name="role" value="owner">I am a car owner
+        </div>
+        <div class="">
+          <input type="checkbox" id="argee" name="argee">
+          <span>I have read and argee with the <a href="#">Terms and Condititions</a></span>
+        </div>
+        <button class="form-submit-btn" type="submit">SIGN UP</button>
+      </form>
+	</div>
+    </div>
+    <!-- Modal bootstrap 5 -->
+    <div class="modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Modal body text goes here.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script>
-    function toggleResetPswd(e) {
-        e.preventDefault();
-        $('#logreg-forms .form-signin').toggle() // display:block or none
-        $('#logreg-forms .form-reset').toggle() // display:block or none
-    }
-
-    function toggleSignUp(e) {
-        e.preventDefault();
-        $('#logreg-forms .form-signin').toggle(); // display:block or none
-        $('#logreg-forms .form-signup').toggle(); // display:block or none
-    }
-
-    $(() => {
-        // Login Register Form
-        $('#logreg-forms #forgot_pswd').click(toggleResetPswd);
-        $('#logreg-forms #cancel_reset').click(toggleResetPswd);
-        $('#logreg-forms #btn-signup').click(toggleSignUp);
-        $('#logreg-forms #cancel_signup').click(toggleSignUp);
-    })
-</script>
+</main>
+<script src="<%=request.getContextPath()%>/resources/js/login.js"></script>
 </body>
 </html>
