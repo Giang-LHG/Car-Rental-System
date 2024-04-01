@@ -2,7 +2,7 @@ package com.fa.carrentalsystem.model;
 
 import java.time.LocalDate;
 
-public class Model {
+public class Booking {
     private int bookingNo;
     private LocalDate startDateTime;
     private LocalDate endDateTime;
@@ -10,7 +10,7 @@ public class Model {
     private int paymentMethod;
     private int status;
 
-    public Model(int bookingNo, LocalDate startDateTime, LocalDate endDateTime, String driversInformation, int paymentMethod, int status) {
+    public Booking(int bookingNo, LocalDate startDateTime, LocalDate endDateTime, String driversInformation, int paymentMethod, int status) {
         this.bookingNo = bookingNo;
         this.startDateTime = startDateTime;
         this.endDateTime = endDateTime;
