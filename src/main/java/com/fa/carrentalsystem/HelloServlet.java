@@ -1,4 +1,4 @@
-package com.example.carrentalsystem;
+package com.fa.carrentalsystem;
 
 import java.io.*;
 import javax.servlet.http.*;
