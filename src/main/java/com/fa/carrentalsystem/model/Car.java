@@ -18,9 +18,10 @@ public class Car {
     private String descriptions;
     private int additionalFunctionId;
     private int termOfUseId;
-    private  String images;
+    private String images;
+    private int ownerId;
 
-    public Car(String name, String licensePlate, String brandId, String modelId, int numberOfSeatId, int productionYear, boolean transmissionType, boolean fuelType, int fuelConsumption, Double basePrice, Double deposit, String address, String descriptions, int additionalFunctionId, int termOfUseId, String images) {
+    public Car(String name, String licensePlate, String brandId, String modelId, int numberOfSeatId, int productionYear, boolean transmissionType, boolean fuelType, int fuelConsumption, Double basePrice, Double deposit, String address, String descriptions, int additionalFunctionId, int termOfUseId, String images, int ownerId) {
         this.name = name;
         this.licensePlate = licensePlate;
         this.brandId = brandId;
@@ -37,6 +38,7 @@ public class Car {
         this.additionalFunctionId = additionalFunctionId;
         this.termOfUseId = termOfUseId;
         this.images = images;
+        this.ownerId = ownerId;
     }
 
     public String getName() {
@@ -167,6 +169,14 @@ public class Car {
         this.images = images;
     }
 
+    public int getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(int ownerId) {
+        this.ownerId = ownerId;
+    }
+
     @Override
     public String toString() {
         return "Car{" +
@@ -186,6 +196,7 @@ public class Car {
                 ", additionalFunctionId=" + additionalFunctionId +
                 ", termOfUseId=" + termOfUseId +
                 ", images='" + images + '\'' +
+                ", ownerId=" + ownerId +
                 '}';
     }
 }
