@@ -9,14 +9,18 @@ public class Booking {
     private String driversInformation;
     private int paymentMethod;
     private int status;
+    private int customerId;
+    private String licensePlate;
 
-    public Booking(int bookingNo, LocalDate startDateTime, LocalDate endDateTime, String driversInformation, int paymentMethod, int status) {
+    public Booking(int bookingNo, LocalDate startDateTime, LocalDate endDateTime, String driversInformation, int paymentMethod, int status, int customerId, String licensePlate) {
         this.bookingNo = bookingNo;
         this.startDateTime = startDateTime;
         this.endDateTime = endDateTime;
         this.driversInformation = driversInformation;
         this.paymentMethod = paymentMethod;
         this.status = status;
+        this.customerId = customerId;
+        this.licensePlate = licensePlate;
     }
 
     public int getBookingNo() {
@@ -67,15 +71,33 @@ public class Booking {
         this.status = status;
     }
 
+    public int getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
+    }
+
+    public String getLicensePlate() {
+        return licensePlate;
+    }
+
+    public void setLicensePlate(String licensePlate) {
+        this.licensePlate = licensePlate;
+    }
+
     @Override
     public String toString() {
-        return "Model{" +
+        return "Booking{" +
                 "bookingNo=" + bookingNo +
                 ", startDateTime=" + startDateTime +
                 ", endDateTime=" + endDateTime +
                 ", driversInformation='" + driversInformation + '\'' +
                 ", paymentMethod=" + paymentMethod +
                 ", status=" + status +
+                ", customerId=" + customerId +
+                ", licensePlate='" + licensePlate + '\'' +
                 '}';
     }
 }

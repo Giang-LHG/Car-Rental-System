@@ -2,7 +2,7 @@ package com.fa.carrentalsystem.model;
 
 import java.time.LocalDate;
 
-public class CarOwner {
+public class User {
     private int nationalId;
     private String name;
     private LocalDate dateOfBirth;
@@ -11,8 +11,10 @@ public class CarOwner {
     private String address;
     private String drivingLicense;
     private Double wallet;
+    private String password;
+    private int role_id;
 
-    public CarOwner(int nationalId, String name, LocalDate dateOfBirth, String phone, String email, String address, String drivingLicense, Double wallet) {
+    public User(int nationalId, String name, LocalDate dateOfBirth, String phone, String email, String address, String drivingLicense, Double wallet, String password, int role_id) {
         this.nationalId = nationalId;
         this.name = name;
         this.dateOfBirth = dateOfBirth;
@@ -21,6 +23,8 @@ public class CarOwner {
         this.address = address;
         this.drivingLicense = drivingLicense;
         this.wallet = wallet;
+        this.password = password;
+        this.role_id = role_id;
     }
 
     public int getNationalId() {
@@ -87,9 +91,25 @@ public class CarOwner {
         this.wallet = wallet;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public int getRole_id() {
+        return role_id;
+    }
+
+    public void setRole_id(int role_id) {
+        this.role_id = role_id;
+    }
+
     @Override
     public String toString() {
-        return "CarOwner{" +
+        return "User{" +
                 "nationalId=" + nationalId +
                 ", name='" + name + '\'' +
                 ", dateOfBirth=" + dateOfBirth +
@@ -98,8 +118,8 @@ public class CarOwner {
                 ", address='" + address + '\'' +
                 ", drivingLicense='" + drivingLicense + '\'' +
                 ", wallet=" + wallet +
+                ", password='" + password + '\'' +
+                ", role_id=" + role_id +
                 '}';
     }
 }
-
-
