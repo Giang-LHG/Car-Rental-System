@@ -6,6 +6,7 @@
 	<meta charset="ISO-8859-1">
 	<title>Login</title>
 	<jsp:include page="../../head.html" />
+	<jsp:include page="../../header.jsp" />
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/login.css">
 </head>
 <body>
