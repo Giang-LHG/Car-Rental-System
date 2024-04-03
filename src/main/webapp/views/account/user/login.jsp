@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/login.css">
 </head>
 <body>
+<jsp:include page="../../header.jsp" />
 <main>
 <!-- Forgot password -->
 <!-- 
