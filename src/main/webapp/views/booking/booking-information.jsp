@@ -120,7 +120,7 @@
 		</div>
 		<div>
 			<button id="cancel" class="btn-cancel">Cancel</button>
-			<button type="submit" name="next" id="next"  class="btn-next">Next</button>
+			<button type="submit" name="next" id="btn-next"  class="btn-next">Next</button>
 		</div>
 </form>
 </body>

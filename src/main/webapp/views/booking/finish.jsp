@@ -14,7 +14,7 @@
 		<div>
 			<a href="#">Go to homepage</a>
 			<a href="#">Book another car</a>
-			<a href="#">View Booking</a>
+			<button name="btn-view" id="btn-view" class="btn-next">View booking</button>
 		</div>
 	</div>
 </body>

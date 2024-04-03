@@ -31,7 +31,7 @@
 		</div>
 		<div>
 			<button id="cancel" class="btn-cancel">Cancel</button>
-			<button type="submit" name="btn-payment" id="btn-payment" class="btn-payment">Confirm payment</button>
+			<button type="submit" name="btn-payment" id="btn-payment" class="btn-next">Confirm payment</button>
 		</div>
 	</form>
 	</div>
