@@ -9,7 +9,8 @@
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/login.css">
 </head>
 <body>
-	<jsp:include page="../../header.jsp" />
+<jsp:include page="../../header.jsp" />
+>>>>>>> eed66582f14876e283851d1d4b688ad329b035cc
 <main>
 <!-- Forgot password -->
 <!-- 
@@ -40,7 +41,7 @@
         LOGIN USING YOUR ACCOUNT
       </div>
 
-      <form class="form" action="" method="post">
+      <form class="form" action="<%=request.getContextPath()%>/auth?action=manual" method="post">
         <div class="form-group">
           <input type="text" id="loginEmail" name="loginEmail" placeholder="your email address" required>
         </div>
