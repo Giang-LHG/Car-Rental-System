@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/header.css">
 </head>
 <body>
-	<header class="d-flex">
+	<header class="d-flex bg-secondary">
 		<div class="col-7 head-div head-title"><i class='fas fa-car-alt' style="font-size: 50px"></i><span> Rent a car today!</span></div>
 		<div class="col-2 head-div head-about-us">ABOUT US</div>
 		<div class="col-3 head-div head-dropdonwn">
