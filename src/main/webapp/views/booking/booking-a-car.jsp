@@ -39,6 +39,6 @@
 		</div>
 	</div>
 	<div class="step-info border border-dark" id="step-info"></div>
-	<script src="../../resources/js/booking/booking-a-car.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/js/booking/booking-a-car.js"></script>
 </body>
 </html>

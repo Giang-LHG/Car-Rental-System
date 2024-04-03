@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div>
-	<form>
+	<form action="payment-booking" method="post" id="payment-booking-form">
 		<h4>Please select your payment method</h4>
 		<div>
 			<div>
