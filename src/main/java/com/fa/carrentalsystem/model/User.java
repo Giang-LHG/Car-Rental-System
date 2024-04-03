@@ -12,9 +12,9 @@ public class User {
     private String drivingLicense;
     private Double wallet;
     private String password;
-    private int role_id;
+    private int roleId;
 
-    public User(int nationalId, String name, LocalDate dateOfBirth, String phone, String email, String address, String drivingLicense, Double wallet, String password, int role_id) {
+    public User(int nationalId, String name, LocalDate dateOfBirth, String phone, String email, String address, String drivingLicense, Double wallet, String password, int roleId) {
         this.nationalId = nationalId;
         this.name = name;
         this.dateOfBirth = dateOfBirth;
@@ -24,7 +24,7 @@ public class User {
         this.drivingLicense = drivingLicense;
         this.wallet = wallet;
         this.password = password;
-        this.role_id = role_id;
+        this.roleId = roleId;
     }
 
     public int getNationalId() {
@@ -99,12 +99,12 @@ public class User {
         this.password = password;
     }
 
-    public int getRole_id() {
-        return role_id;
+    public int getRoleId() {
+        return roleId;
     }
 
-    public void setRole_id(int role_id) {
-        this.role_id = role_id;
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
     }
 
     @Override
@@ -119,7 +119,7 @@ public class User {
                 ", drivingLicense='" + drivingLicense + '\'' +
                 ", wallet=" + wallet +
                 ", password='" + password + '\'' +
-                ", role_id=" + role_id +
+                ", role_id=" + roleId +
                 '}';
     }
 }

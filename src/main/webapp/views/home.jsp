@@ -40,7 +40,7 @@
                         >
                     </div>
                     <div class="col border-start">
-                        <a href="#" class="text-decoration-none"
+                        <a href="${pageContext.request.contextPath}/auth?action=login" class="text-decoration-none"
                         ><strong class="text-light">LOG IN</strong></a
                         >
                     </div>

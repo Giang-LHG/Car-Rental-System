@@ -13,7 +13,7 @@
 		<div class="col-2 head-div head-about-us">ABOUT US</div>
 		<div class="col-3 head-div head-dropdonwn">
 			<div class="dropdown">
-		    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+		    <button type="button" class="btn btn-basic dropdown-toggle" data-bs-toggle="dropdown">
 		      <i class='fas fa-user-circle'></i><span> Welcome, ${username}</span>
 		    </button>
 		    <ul class="dropdown-menu">
