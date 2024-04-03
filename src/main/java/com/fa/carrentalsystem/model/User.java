@@ -3,7 +3,7 @@ package com.fa.carrentalsystem.model;
 import java.time.LocalDate;
 
 public class User {
-    private int nationalId;
+    private String nationalId;
     private String name;
     private LocalDate dateOfBirth;
     private String phone;
@@ -14,7 +14,7 @@ public class User {
     private String password;
     private int roleId;
 
-    public User(int nationalId, String name, LocalDate dateOfBirth, String phone, String email, String address, String drivingLicense, Double wallet, String password, int roleId) {
+    public User(String nationalId, String name, LocalDate dateOfBirth, String phone, String email, String address, String drivingLicense, Double wallet, String password, int roleId) {
         this.nationalId = nationalId;
         this.name = name;
         this.dateOfBirth = dateOfBirth;
@@ -27,11 +27,11 @@ public class User {
         this.roleId = roleId;
     }
 
-    public int getNationalId() {
+    public String getNationalId() {
         return nationalId;
     }
 
-    public void setNationalId(int nationalId) {
+    public void setNationalId(String     nationalId) {
         this.nationalId = nationalId;
     }
 
