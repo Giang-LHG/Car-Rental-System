@@ -19,9 +19,9 @@ public class Car {
     private int additionalFunctionId;
     private int termOfUseId;
     private String images;
-    private int ownerId;
+    private String ownerId;
 
-    public Car(String name, String licensePlate, String brandId, String modelId, int numberOfSeatId, int productionYear, boolean transmissionType, boolean fuelType, int fuelConsumption, Double basePrice, Double deposit, String address, String descriptions, int additionalFunctionId, int termOfUseId, String images, int ownerId) {
+    public Car(String name, String licensePlate, String brandId, String modelId, int numberOfSeatId, int productionYear, boolean transmissionType, boolean fuelType, int fuelConsumption, Double basePrice, Double deposit, String address, String descriptions, int additionalFunctionId, int termOfUseId, String images, String ownerId) {
         this.name = name;
         this.licensePlate = licensePlate;
         this.brandId = brandId;
@@ -169,11 +169,11 @@ public class Car {
         this.images = images;
     }
 
-    public int getOwnerId() {
+    public String getOwnerId() {
         return ownerId;
     }
 
-    public void setOwnerId(int ownerId) {
+    public void setOwnerId(String ownerId) {
         this.ownerId = ownerId;
     }
 

@@ -8,9 +8,9 @@ public class Feedback {
     private String content;
     private LocalDate dateTime;
     private int bookingId;
-    private int customerId;
+    private String customerId;
 
-    public Feedback(int id, float ratings, String content, LocalDate dateTime, int bookingId, int customerId) {
+    public Feedback(int id, float ratings, String content, LocalDate dateTime, int bookingId, String customerId) {
         this.id = id;
         this.ratings = ratings;
         this.content = content;
@@ -59,11 +59,11 @@ public class Feedback {
         this.bookingId = bookingId;
     }
 
-    public int getCustomerId() {
+    public String getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(int customerId) {
+    public void setCustomerId(String customerId) {
         this.customerId = customerId;
     }
 
