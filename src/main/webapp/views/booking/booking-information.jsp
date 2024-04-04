@@ -65,6 +65,7 @@
 	</div>
 	<div class="driver-information">
 		<h3>Driver's information</h3>
+		<input type="checkbox" name="different">Different than Renter's information
 		<table>
 			<tr>
 				<td>
