@@ -52,7 +52,7 @@ public class ValidatorUtils {
     }
 
     public boolean EmailValidator(String input) {        //allow email with "@fpt.edu.vn" and "@fe.edu.vn" only
-        String regex = "^[A-Za-z0-9.]+@(fpt.edu.vn|fe.edu.vn)$";
+        String regex = "^[A-Za-z0-9.]+@(gmail.com)$";
         return input.matches(regex);
     }
 
@@ -89,4 +89,8 @@ public class ValidatorUtils {
         return check;
     }
 
+    public static void main(String[] args) {
+        ValidatorUtils vu = new ValidatorUtils();
+        System.out.println(vu.EmailValidator("mineluciferlol@gmail.com"));
+    }
 }

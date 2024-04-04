@@ -62,7 +62,7 @@
         	NOT A MEMBER YET?
       </div>
 
-      <form class="form" action="" method="post">
+      <form class="form" action="<%=request.getContextPath()%>/auth?action=register" method="post">
         <div class="form-group">
           <input type="text" id="name" name="name" placeholder="your name" required>
         </div>
@@ -73,19 +73,23 @@
           <input type="text" id="phone" name="phone" placeholder="your phone number" required>
         </div>
         <div class="form-group">
+          <input type="text" id="nationalId" name="nationalId" placeholder="your nationalID" required>
+        </div>
+        <div class="form-group">
           <input type="password" id="registerPassword" name="registerPassword" placeholder="password" required>
         </div>
         <div class="form-group">
           <input type="password" id="confirmPassword" name="confirmPassword" placeholder="confirm password" required>
         </div>
         <div class="">
-          <input type="radio" id="role1" name="role" value="rent">I want to rent a car
-          <input type="radio" id="role2" name="role" value="owner">I am a car owner
+          <input type="radio" id="role1" name="role" value="0">I want to rent a car
+          <input type="radio" id="role2" name="role" value="1">I am a car owner
         </div>
         <div class="">
           <input type="checkbox" id="argee" name="argee">
           <span>I have read and argee with the <a href="#">Terms and Condititions</a></span>
         </div>
+        <div class="notif" style="color: red">${requestScope.notification}</div>
         <button class="form-submit-btn" type="submit">SIGN UP</button>
       </form>
 	</div>

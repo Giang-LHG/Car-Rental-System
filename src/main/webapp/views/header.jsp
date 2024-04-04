@@ -20,7 +20,7 @@
 		      <li><a class="dropdown-item" href="#">My Profile</a></li>
 		      <li><a class="dropdown-item" href="#">My Bookings</a></li>
 		      <li><a class="dropdown-item" href="#">My Wallet</a></li>
-		      <li><a class="dropdown-item" href="#" id="logout">Log out</a></li>
+		      <li><a class="dropdown-item" href="${pageContext.request.contextPath}/auth?action=logout" id="logout">Log out</a></li>
 		    </ul>
 		  	</div>
 		</div>
