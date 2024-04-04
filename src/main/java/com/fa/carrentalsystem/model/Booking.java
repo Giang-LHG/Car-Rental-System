@@ -9,10 +9,10 @@ public class Booking {
     private String driversInformation;
     private int paymentMethod;
     private int status;
-    private int customerId;
+    private String customerId;
     private String licensePlate;
 
-    public Booking(int bookingNo, LocalDate startDateTime, LocalDate endDateTime, String driversInformation, int paymentMethod, int status, int customerId, String licensePlate) {
+    public Booking(int bookingNo, LocalDate startDateTime, LocalDate endDateTime, String driversInformation, int paymentMethod, int status, String customerId, String licensePlate) {
         this.bookingNo = bookingNo;
         this.startDateTime = startDateTime;
         this.endDateTime = endDateTime;
@@ -71,11 +71,11 @@ public class Booking {
         this.status = status;
     }
 
-    public int getCustomerId() {
+    public String getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(int customerId) {
+    public void setCustomerId(String customerId) {
         this.customerId = customerId;
     }
 
