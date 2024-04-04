@@ -46,9 +46,9 @@
           <input type="text" id="loginEmail" name="loginEmail" placeholder="your email address" required>
         </div>
         <div class="form-group">
-          <input type="text" id="loginPassword" name="loginPassword" placeholder="password" required>
+          <input type="password" id="loginPassword" name="loginPassword" placeholder="password" required>
         </div>
-
+        <div class="notif" style="color: red">${requestScope.notification}</div>
       <p class="signup-link">
         Don't have an account?
         <a href="#" class="signup-link link"> Forgot your password?(???)</a>
