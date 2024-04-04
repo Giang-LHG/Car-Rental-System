@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rent a car today!</title>
-    <jsp:include page="head.html"></jsp:include>
+    <jsp:include page="../head.html"></jsp:include>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -128,38 +128,111 @@
     </div>
     <div class="tabbed-content">
         <ul>
-            <li>Basic Information</li>
+            <li class="active">Basic Information</li>
             <li>Details</li>
-            <li class="active">Terms of use</li>
+            <li>Terms of use</li>
         </ul>
         <div class="tab-content">
-            <p>Base price: <input type="text" value="900,000"/> VND/Day</p>
-            <p>Required deposit: <input type="text" value="15,000,000"/> VND</p>
+            <p>Mileage:</p>
+            <p>Fuel consumption: 18 liter/100 km</p>
+            <p>Address:</p>
+            <p>Note: Full address will be available after you've paid the deposit to rent</p>
+            <p>Description:</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
             <div>
-                <p>Terms of use:</p>
+                <p>Additional functions:</p>
                 <div>
-                    <input type="checkbox" id="no-smoking" checked/>
-                    <label for="no-smoking">No smoking</label>
+                    <input type="checkbox" id="bluetooth" checked />
+                    <label for="bluetooth">Bluetooth</label>
                 </div>
                 <div>
-                    <input type="checkbox" id="no-pet" checked/>
-                    <label for="no-pet">No pet</label>
+                    <input type="checkbox" id="gps" />
+                    <label for="gps">GPS</label>
                 </div>
                 <div>
-                    <input type="checkbox" id="no-food"/>
-                    <label for="no-food">No food in car</label>
+                    <input type="checkbox" id="camera" />
+                    <label for="camera">Camera</label>
                 </div>
                 <div>
-                    <input type="checkbox" id="other"/>
-                    <label for="other">Other</label>
+                    <input type="checkbox" id="sunroof" checked />
+                    <label for="sunroof">Sun roof</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="child-lock" checked />
+                    <label for="child-lock">Child lock</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="child-seat" checked />
+                    <label for="child-seat">Child seat</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="dvd" />
+                    <label for="dvd">DVD</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="usb" />
+                    <label for="usb">USB</label>
                 </div>
             </div>
         </div>
-
-
+        <div class="tab-content">
+            <table>
+                <tr>
+                    <th>License plate:</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>Brand name:</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>Model:</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>Production year:</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>No. of seats:</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>Transmission:</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>Fuel:</th>
+                    <td></td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <th>No</th>
+                    <th>Name</th>
+                    <th>Note</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Registration paper</td>
+                    <td>Verified</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Certificate of inspection</td>
+                    <td>Verified</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Insurance</td>
+                    <td>Not available</td>
+                </tr>
+            </table>
+            <p>Note: Documents will be available for viewing after you've paid the deposit to rent.</p>
+        </div>
     </div>
 </main>
 
-<jsp:include page="footer.jsp"></jsp:include>
+<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>

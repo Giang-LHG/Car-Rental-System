@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rent a car today!</title>
-    <jsp:include page="head.html"></jsp:include>
+    <jsp:include page="../head.html"></jsp:include>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -128,10 +128,33 @@
     </div>
     <div class="tabbed-content">
         <ul>
-            <li class="active">Basic Information</li>
-            <li>Details</li>
+            <li>Basic Information</li>
+            <li class="active">Details</li>
             <li>Terms of use</li>
         </ul>
+        <div class="tab-content">
+            <p>Base price: <input type="text" value="900,000"/> VND/Day</p>
+            <p>Required deposit: <input type="text" value="15,000,000"/> VND</p>
+            <div>
+                <p>Terms of use:</p>
+                <div>
+                    <input type="checkbox" id="no-smoking" checked/>
+                    <label for="no-smoking">No smoking</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="no-pet" checked/>
+                    <label for="no-pet">No pet</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="no-food"/>
+                    <label for="no-food">No food in car</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="other"/>
+                    <label for="other">Other</label>
+                </div>
+            </div>
+        </div>
         <div class="tab-content">
             <p>Mileage:</p>
             <p>Fuel consumption: 18 liter/100 km</p>
@@ -175,64 +198,10 @@
                 </div>
             </div>
         </div>
-        <div class="tab-content">
-            <table>
-                <tr>
-                    <th>License plate:</th>
-                    <td></td>
-                </tr>
-                <tr>
-                    <th>Brand name:</th>
-                    <td></td>
-                </tr>
-                <tr>
-                    <th>Model:</th>
-                    <td></td>
-                </tr>
-                <tr>
-                    <th>Production year:</th>
-                    <td></td>
-                </tr>
-                <tr>
-                    <th>No. of seats:</th>
-                    <td></td>
-                </tr>
-                <tr>
-                    <th>Transmission:</th>
-                    <td></td>
-                </tr>
-                <tr>
-                    <th>Fuel:</th>
-                    <td></td>
-                </tr>
-            </table>
-            <table>
-                <tr>
-                    <th>No</th>
-                    <th>Name</th>
-                    <th>Note</th>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Registration paper</td>
-                    <td>Verified</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Certificate of inspection</td>
-                    <td>Verified</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Insurance</td>
-                    <td>Not available</td>
-                </tr>
-            </table>
-            <p>Note: Documents will be available for viewing after you've paid the deposit to rent.</p>
-        </div>
+
     </div>
 </main>
 
-<jsp:include page="footer.jsp"></jsp:include>
+<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>
