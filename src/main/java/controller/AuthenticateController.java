@@ -1,6 +1,8 @@
 package controller;
 
 import com.fa.carrentalsystem.model.User;
+import dao.ProfileDAO;
+import dao.UserDAO;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -98,42 +100,42 @@ public class AuthenticateController extends HttpServlet {
 
     protected void doPost_ManualLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //        //init
-//        UserDAO userDAO = new UserDAOImpl();
-//        ProfileDAO profileDAO = new ProfileDAOImpl();
+        UserDAO userDAO = new UserDAO();
+        ProfileDAO profileDAO = new ProfileDAO();
 //        EncryptorUtils encryptor = new EncryptorUtils();
 //
 //        //Getting data from login page
-//        String username = request.getParameter("username").trim();
-//        String password = request.getParameter("password").trim();
+        String email = request.getParameter("loginEmail").trim();
+        String password = request.getParameter("loginPassword").trim();
 //
 //        //Encrypt password
 //        String encryptedPW = encryptor.encrypt(password);
 //
 //        //Try to log in
-//        User user = userDAO.login(username, encryptedPW);
+        User user = userDAO.login(email, password);
 //
-//        if (user == null) {
-//            request.setAttribute("notification", "Username or password wrong!\n");
-//            request.getRequestDispatcher("/views/account/login.jsp").forward(request, response);
-//        } else {
-//            HttpSession session = request.getSession();
-//            session.setAttribute("user", user);
-//            session.setMaxInactiveInterval(60 * 60);
-//            if (!profileDAO.check(user.getUserId())) {
-//                response.sendRedirect("user?action=addProf");
-//            } else {
-//                switch (user.getRoleId()) {
-//                    case 0:
-//                        response.sendRedirect("manageCourse");
-//                        break;
-//                    case 1:
-//                        response.sendRedirect("classUser");
-//                        break;
-//                    case 2:
-//                        response.sendRedirect("courseUser");
-//                        break;
-//                }
-//            }
-//        }
+        if (user == null) {
+            request.setAttribute("notification", "Email or password wrong!\n");
+            request.getRequestDispatcher("/views/account/user/login.jsp").forward(request, response);
+        } else {
+            HttpSession session = request.getSession();
+            session.setAttribute("user", user);
+            session.setAttribute("username",user.getName());
+            session.setMaxInactiveInterval(60 * 60);
+            if (!profileDAO.check(user.getEmail())) {
+                response.sendRedirect("user?action=addProf");
+            } else {
+                switch (user.getRoleId()) {
+                    //Customer
+                    case 0:
+                        response.sendRedirect("customer");
+                        break;
+                    //CarOwner
+                    case 1:
+                        response.sendRedirect("car-owner");
+                        break;
+                }
+            }
+        }
     }
 }

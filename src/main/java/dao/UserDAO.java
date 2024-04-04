@@ -79,7 +79,6 @@ public class UserDAO {
             //find user by email
             ps = con.prepareStatement(findUserSQL);
             ps.setString(1, input);
-            ps.setString(2, input);
             rs = ps.executeQuery();
             if (rs.next()) {
                 return getUserFromResultSet(rs);

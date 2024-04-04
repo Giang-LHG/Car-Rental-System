@@ -9,7 +9,6 @@
 <html>
 <head>
     <title>Home Page As Customer</title>
-  <jsp:include page="../../../head.html"></jsp:include>
 </head>
 <body>
 <jsp:include page="../../../header.jsp"></jsp:include>
