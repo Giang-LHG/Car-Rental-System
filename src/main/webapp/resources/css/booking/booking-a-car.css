@@ -87,7 +87,7 @@
 		 font-size: 11px;
 	}
 	 .container li:first-child {
-		 max-width: 70px;
+		 /*max-width: 70px;*/
 	}
 }
 .progress-bar{

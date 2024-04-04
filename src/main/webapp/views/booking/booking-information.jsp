@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="booking-information" method="post" id="booking-information-form">
+<form id="booking-information-form">
 	<div class="renter-information">
 		<h3>Rental's information</h3>
 		<table>
@@ -121,7 +121,7 @@
 		</div>
 		<div>
 			<button id="cancel" class="btn-cancel">Cancel</button>
-			<button type="submit" name="next" id="btn-next"  class="btn-next">Next</button>
+			<button type="button" name="next" id="btn-next"  class="btn-next">Next</button>
 		</div>
 </form>
 </body>

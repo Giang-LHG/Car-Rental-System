@@ -13,7 +13,7 @@
 	<div class="booking-details"></div>
 	<div class="progress-bar">
 		<div class="container">
-			<ul>
+			<ul style="flex-basis: 30%">
 			 <li class="content progress-link current">
 			   <div class="content" id="step-1">Step 1: Booking Information</div>
 			 </li>

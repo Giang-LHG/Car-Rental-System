@@ -8,7 +8,8 @@
 </head>
 <body>
 	<div>
-	<form action="payment-booking" method="post" id="payment-booking-form">
+<%--	<form action="payment-booking" method="post" id="payment-booking-form">--%>
+	<form id="payment-booking-form">
 		<h4>Please select your payment method</h4>
 		<div>
 			<div>
@@ -31,7 +32,7 @@
 		</div>
 		<div>
 			<button id="cancel" class="btn-cancel">Cancel</button>
-			<button type="submit" name="btn-payment" id="btn-payment" class="btn-next">Confirm payment</button>
+			<button type="button" name="btn-payment" id="btn-payment" class="btn-next">Confirm payment</button>
 		</div>
 	</form>
 	</div>

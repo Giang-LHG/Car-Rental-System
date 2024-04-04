@@ -43,14 +43,15 @@ $(document).ready(function() {
 			success: function(response) {
 				$("#step-info").html(response);
 				currentActive(0);
-				$('#booking-information-form').submit(function(){
+				$('.btn-next').click(function(event){
+					event.preventDefault();
 					$.ajax({
 						method: 'POST',
 						url: 'payment-booking',
 						success: function(response) {
 							$("#step-info").html(response);
 							currentActive(1);
-							$('#payment-booking-form').submit(function(){
+							$('#btn-payment').click(function(){
 								$.ajax({
 									method: 'POST',
 									url: 'finish-booking',
