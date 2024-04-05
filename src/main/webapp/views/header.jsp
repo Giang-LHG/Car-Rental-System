@@ -14,7 +14,7 @@
 		<div class="col-3 head-div head-dropdonwn">
 			<div class="dropdown">
 		    <button type="button" class="btn btn-basic dropdown-toggle" data-bs-toggle="dropdown">
-		      <i class='fas fa-user-circle'></i><span> Welcome, ${username}</span>
+		      <i class='fas fa-user-circle'></i><span> Welcome, ${sessionScope.username}</span>
 		    </button>
 		    <ul class="dropdown-menu">
 		      <li><a class="dropdown-item" href="#">My Profile</a></li>

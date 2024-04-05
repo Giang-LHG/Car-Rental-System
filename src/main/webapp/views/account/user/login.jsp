@@ -5,7 +5,6 @@
 <head>
 	<meta charset="ISO-8859-1">
 	<title>Login</title>
-	<jsp:include page="../../head.html" />
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/login.css">
 </head>
 <body>
@@ -45,14 +44,45 @@
           <input type="text" id="loginEmail" name="loginEmail" placeholder="your email address" required>
         </div>
         <div class="form-group">
-          <input type="text" id="loginPassword" name="loginPassword" placeholder="password" required>
+          <input type="password" id="loginPassword" name="loginPassword" placeholder="password" required>
         </div>
-
+        <div class="notif" style="color: red">${requestScope.notification}</div>
       <p class="signup-link">
         Don't have an account?
         <a href="#" class="signup-link link"> Forgot your password?(???)</a>
       </p>
-      	<button class="btn-fill" id="btn-fill" onclick="fillAccount()">fill account</button>
+<!-- Modal bootstrap 5 -->
+<!-- Button to Open the Modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+  Open modal
+</button>
+
+<!-- The Modal -->
+	<div class="modal" id="myModal">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	
+	      <!-- Modal Header -->
+	      <div class="modal-header">
+	        <h4 class="modal-title">Fill account</h4>
+	        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+	      </div>
+	
+	      <!-- Modal body -->
+	      <div class="modal-body">
+	        <div onclick="fillAccountRenter()">Renter</div>
+	        <div onclick="fillAccountOwner()">Owner</div>
+	      </div>
+	
+	      <!-- Modal footer -->
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+	      </div>
+	
+	    </div>
+	  </div>
+	</div>
+<!--  -->
         <button class="form-submit-btn" type="submit">Login</button>
       </form>
 	</div>
@@ -90,24 +120,8 @@
       </form>
 	</div>
     </div>
-    <!-- Modal bootstrap 5 -->
-    <div class="modal" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p>Modal body text goes here.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
+    
+<jsp:include page="../../footer.jsp" />
 </main>
 <script src="<%=request.getContextPath()%>/resources/js/login.js"></script>
 </body>
