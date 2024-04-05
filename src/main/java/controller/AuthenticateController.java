@@ -1,5 +1,6 @@
 package controller;
 
+import com.fa.carrentalsystem.model.Profile;
 import com.fa.carrentalsystem.model.User;
 import com.sun.xml.internal.messaging.saaj.packaging.mime.MessagingException;
 import dao.ProfileDAO;
@@ -132,7 +133,8 @@ public class AuthenticateController extends HttpServlet {
             session.setAttribute("user", user);
             session.setAttribute("username", user.getName());
             session.setMaxInactiveInterval(60 * 60);
-            if (!profileDAO.check(user.getEmail())) {
+            Profile p = profileDAO.check(user.getEmail());
+            if (p.getDateOfBirth() == null || p.getDrivingLicense() == null) {
                 response.sendRedirect("user?action=addProf");
             } else {
                 switch (user.getRoleId()) {
