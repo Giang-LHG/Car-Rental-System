@@ -9,10 +9,9 @@
 <html>
 <head>
     <title>Personal Infor</title>
-    <jsp:include page="head.html"></jsp:include>
 </head>
 <body>
-<jsp:include page="header.jsp"></jsp:include>
+<jsp:include page="../../header.jsp"></jsp:include>
 <section class="main-profile-content">
     <div class="container">
         <div class="dividers">
@@ -211,6 +210,6 @@
         </div>
     </div>
 </section>
-<jsp:include page="footer.jsp"></jsp:include>
+<jsp:include page="../../footer.jsp"></jsp:include>
 </body>
 </html>
