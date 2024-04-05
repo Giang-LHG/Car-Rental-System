@@ -14,8 +14,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3">
-                <h4>Rent Car</h4>
-                <p>Lorem ipsum dolor sit,</p>
+                <h4>Rent Cars</h4>
+                <p>Search car and Rates</p>
             </div>
             <div class="col-md-3">
                 <h4>Customer Access</h4>
@@ -26,7 +26,7 @@
             </div>
             <div class="col-md-6">
                 <h4>Join Us</h4>
-                <p>New User Sign Up</p>
+                <p>New User sign Up</p>
             </div>
         </div>
     </div>
