@@ -142,27 +142,27 @@ public class UserDAO {
 
     public static void main(String[] args) {
         UserDAO ud = new UserDAO();
-
-
-        User u = new User();
-        u.setName("Cuong");
-        u.setPhone("01241231241");
-        u.setEmail("abcxyz@gmail.com");
-        u.setPassword("1");
-        u.setNationalId("1125124125123");
-        u.setRoleId(0);
-
-        ud.save(u);
-        List<User> list = ud.loadUser();
-
-        System.out.println(list.size());
+//
+//
+//        User u = new User();
+//        u.setName("Cuong");
+//        u.setPhone("01241231241");
+//        u.setEmail("abcxyz@gmail.com");
+//        u.setPassword("1");
+//        u.setNationalId("1125124125123");
+//        u.setRoleId(0);
+//
+//        ud.save(u);
+//        List<User> list = ud.loadUser();
+//
+//        System.out.println(list.size());
 //
 //        for (User u:list
 //             ) {
 //            System.out.println(u.toString());
 //        }
 
-//        User u = ud.login("mineluciferlol@gmail.com","1");
-//        System.out.println(u.toString());
+        User u = ud.login("vietthu002@gmail.com","Phanminhcuong2k3@");
+        System.out.println(u.toString());
     }
 }

@@ -50,4 +50,23 @@ public class ProfileDAO {
         //if no email found - return null
         return null;
     }
+
+    public void addProf(String dob,String address,String driving_license,String nationalId) {
+        // Init
+        PreparedStatement ps = null;
+        String getUserLoginSQL = "  UPDATE [User] set date_of_birth = ?, address = ?, driving_license = ? where national_id = ?";
+
+        // Connect to db
+        try ( Connection con = DBUtils.getConnection()) {
+            ps = con.prepareStatement(getUserLoginSQL);
+            ps.setString(1, dob);
+            ps.setString(2, address);
+            ps.setString(3, driving_license);
+            ps.setString(4, nationalId);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
 }

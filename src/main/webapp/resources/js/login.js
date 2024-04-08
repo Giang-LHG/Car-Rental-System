@@ -1,4 +1,3 @@
-
 function fillAccountRenter(){
 		let username = document.getElementById('loginEmail');
 		username.value = "vietthu002@gmail.com";
@@ -21,5 +20,4 @@ function check() {
         return false;
     }
     return true;
-
 }

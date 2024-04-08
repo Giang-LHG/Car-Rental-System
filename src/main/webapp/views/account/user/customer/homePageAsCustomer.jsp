@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Lenovo
@@ -341,6 +342,13 @@
     </div>
   </div>
 </section>
+<c:if test="${not empty requestScope.success}">
+  <script>
+    window.addEventListener("load",function(){
+      alert("${requestScope.success}");
+    });
+  </script>
+</c:if>
 <jsp:include page="../../../footer.jsp"></jsp:include>
 </body>
 </html>
