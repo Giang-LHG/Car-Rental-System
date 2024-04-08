@@ -177,7 +177,7 @@ public class AuthenticateController extends HttpServlet {
 
         if (check) {
             if (ud.check(email) == null) {
-                request.setAttribute("notify", "Registered successfully!");
+                request.setAttribute("notif", "Registered successfully!");
 
                 //add step 1
                 temp.setName(name);
@@ -193,7 +193,7 @@ public class AuthenticateController extends HttpServlet {
                 response.sendRedirect(request.getContextPath());
             } else {
                 String error = "Email [" + email + "] already existed !!";
-                request.setAttribute("notify", error);
+                request.setAttribute("notif", error);
                 request.getRequestDispatcher("/views/account/user/login.jsp").forward(request, response);
             }
         } else {
@@ -203,7 +203,7 @@ public class AuthenticateController extends HttpServlet {
             }else if(ud.checkById(nationalID) != null){
                 notif = "National ID already registered !";
             }
-            request.setAttribute("notify", notif);
+            request.setAttribute("notif", notif);
             request.getRequestDispatcher("/views/account/user/login.jsp").forward(request, response);
         }
     }

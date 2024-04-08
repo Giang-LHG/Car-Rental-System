@@ -89,7 +89,7 @@
           <input type="checkbox" id="agree" name="agree">
           <span>I have read and argee with the <a href="#">Terms and Conditions</a></span>
         </div>
-        <div id="notif" class="notif" style="color: red">${requestScope.notification}</div>
+        <div id="notif" class="notif" style="color: red">${requestScope.notif}</div>
         <button class="form-submit-btn" type="submit">SIGN UP</button>
       </form>
 	</div>
