@@ -62,15 +62,15 @@
         	NOT A MEMBER YET?
       </div>
 
-      <form class="form" action="<%=request.getContextPath()%>/auth?action=register" method="post">
+      <form class="form" id="registerForm" action="<%=request.getContextPath()%>/auth?action=register" method="post" onsubmit="return check()">
         <div class="form-group">
           <input type="text" id="name" name="name" placeholder="your name" required>
         </div>
         <div class="form-group">
-          <input type="email" id="registerEmail" name="registerEmail" placeholder="your email address" required>
+          <input type="email" id="registerEmail" name="registerEmail" placeholder="your email address" required pattern="^[A-Za-z0-9.]+@(gmail.com)$">
         </div>
         <div class="form-group">
-          <input type="text" id="phone" name="phone" placeholder="your phone number" required>
+          <input type="text" id="phone" name="phone" placeholder="your phone number" required maxlength="10">
         </div>
         <div class="form-group">
           <input type="text" id="nationalId" name="nationalId" placeholder="your nationalID" required>
@@ -82,14 +82,14 @@
           <input type="password" id="confirmPassword" name="confirmPassword" placeholder="confirm password" required>
         </div>
         <div class="">
-          <input type="radio" id="role1" name="role" value="0">I want to rent a car
+          <input type="radio" id="role1" name="role" value="0" checked>I want to rent a car
           <input type="radio" id="role2" name="role" value="1">I am a car owner
         </div>
         <div class="">
-          <input type="checkbox" id="argee" name="argee">
-          <span>I have read and argee with the <a href="#">Terms and Condititions</a></span>
+          <input type="checkbox" id="agree" name="agree">
+          <span>I have read and argee with the <a href="#">Terms and Conditions</a></span>
         </div>
-        <div class="notif" style="color: red">${requestScope.notification}</div>
+        <div id="notif" class="notif" style="color: red">${requestScope.notification}</div>
         <button class="form-submit-btn" type="submit">SIGN UP</button>
       </form>
 	</div>

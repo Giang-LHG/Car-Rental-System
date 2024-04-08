@@ -135,7 +135,7 @@ public class AuthenticateController extends HttpServlet {
             session.setMaxInactiveInterval(60 * 60);
             Profile p = profileDAO.check(user.getEmail());
             if (p.getDateOfBirth() == null || p.getDrivingLicense() == null) {
-                response.sendRedirect("user?action=addProf");
+                response.sendRedirect("userDetail?action=addProfile");
             } else {
                 switch (user.getRoleId()) {
                     //Customer
@@ -201,7 +201,7 @@ public class AuthenticateController extends HttpServlet {
             if(!password.equals(rePass)){
                 notif = "Confirm password not match !";
             }else if(ud.checkById(nationalID) != null){
-                notif = "National ID already existed !";
+                notif = "National ID already registered !";
             }
             request.setAttribute("notify", notif);
             request.getRequestDispatcher("/views/account/user/login.jsp").forward(request, response);

@@ -51,7 +51,7 @@ public class ValidatorUtils {
         return input.matches(regex);
     }
 
-    public boolean EmailValidator(String input) {        //allow email with "@fpt.edu.vn" and "@fe.edu.vn" only
+    public boolean EmailValidator(String input) {        //allow email format only
         String regex = "^[A-Za-z0-9.]+@(gmail.com)$";
         return input.matches(regex);
     }
