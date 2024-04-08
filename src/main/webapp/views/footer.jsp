@@ -26,7 +26,7 @@
             </div>
             <div class="col-md-6">
                 <h4>Join Us</h4>
-                <p>New User Sign Up</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
             </div>
         </div>
     </div>

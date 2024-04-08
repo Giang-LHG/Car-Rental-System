@@ -13,7 +13,12 @@ import java.time.LocalDate;
 public class ProfileDAO {
     private Profile getProfileFromResultSet(ResultSet rs) throws SQLException {
         String name = rs.getString(1);
-        LocalDate dateOfBirth = LocalDate.parse(rs.getString(2));
+        LocalDate dateOfBirth;
+        if (rs.getString(2) == null) {
+            dateOfBirth = null;
+        } else {
+            dateOfBirth = LocalDate.parse(rs.getString(2));
+        }
         String phone = rs.getString(3);
         String email = rs.getString(4);
         String nationalId = rs.getString(5);
@@ -23,7 +28,7 @@ public class ProfileDAO {
         return new Profile(name, dateOfBirth, phone, email, nationalId, drivingLicense, address);
     }
 
-    public boolean check(String input) {
+    public Profile check(String input) {
         //init
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -36,13 +41,13 @@ public class ProfileDAO {
             ps.setString(1, input);
             rs = ps.executeQuery();
             if (rs.next()) {
-                return true;
+                return getProfileFromResultSet(rs);
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
 
         //if no email found - return null
-        return false;
+        return null;
     }
 }

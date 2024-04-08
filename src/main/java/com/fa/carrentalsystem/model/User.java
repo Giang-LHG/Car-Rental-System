@@ -27,6 +27,9 @@ public class User {
         this.roleId = roleId;
     }
 
+    public User() {
+    }
+
     public String getNationalId() {
         return nationalId;
     }
