@@ -1,9 +1,9 @@
 
 function fillAccountRenter(){
 		let username = document.getElementById('loginEmail');
-		username.value = "fancuong@gmail.com";
+		username.value = "vietthu002@gmail.com";
 		let password = document.getElementById('loginPassword');
-		password.value = "1";
+		password.value = "Phanminhcuong2k3@";
 }
 function fillAccountOwner(){
 		let username = document.getElementById('loginEmail');
