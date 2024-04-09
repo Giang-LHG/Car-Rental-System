@@ -1,18 +1,18 @@
 package com.fa.carrentalsystem.model;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Booking {
     private int bookingNo;
-    private LocalDate startDateTime;
-    private LocalDate endDateTime;
+    private LocalDateTime startDateTime;
+    private LocalDateTime endDateTime;
     private String driversInformation;
     private int paymentMethod;
     private int status;
     private String customerId;
     private String licensePlate;
 
-    public Booking(int bookingNo, LocalDate startDateTime, LocalDate endDateTime, String driversInformation, int paymentMethod, int status, String customerId, String licensePlate) {
+    public Booking(int bookingNo, LocalDateTime startDateTime, LocalDateTime endDateTime, String driversInformation, int paymentMethod, int status, String customerId, String licensePlate) {
         this.bookingNo = bookingNo;
         this.startDateTime = startDateTime;
         this.endDateTime = endDateTime;
@@ -31,19 +31,19 @@ public class Booking {
         this.bookingNo = bookingNo;
     }
 
-    public LocalDate getStartDateTime() {
+    public LocalDateTime getStartDateTime() {
         return startDateTime;
     }
 
-    public void setStartDateTime(LocalDate startDateTime) {
+    public void setStartDateTime(LocalDateTime startDateTime) {
         this.startDateTime = startDateTime;
     }
 
-    public LocalDate getEndDateTime() {
+    public LocalDateTime getEndDateTime() {
         return endDateTime;
     }
 
-    public void setEndDateTime(LocalDate endDateTime) {
+    public void setEndDateTime(LocalDateTime endDateTime) {
         this.endDateTime = endDateTime;
     }
 
