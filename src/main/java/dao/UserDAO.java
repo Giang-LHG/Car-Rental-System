@@ -12,10 +12,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDAO {
-    private User getUserFromResultSet(ResultSet rs) throws SQLException{
+    private User getUserFromResultSet(ResultSet rs) throws SQLException {
         String nationalId = rs.getString(1);
         String name = rs.getString(2);
-        LocalDate dateOfBirth = LocalDate.parse(rs.getString(3));
+        String dob = rs.getString(3);
+        LocalDate dateOfBirth;
+        if (dob == null) {
+            dateOfBirth = null;
+        } else {
+            dateOfBirth = LocalDate.parse(dob);
+        }
         String phone = rs.getString(4);
         String email = rs.getString(5);
         String address = rs.getString(6);
@@ -24,10 +30,10 @@ public class UserDAO {
         String password = rs.getString(9);
         int roleId = rs.getInt(10);
 
-        return new User(nationalId,name,dateOfBirth,phone,email,address,drivingLicense,wallet,password,roleId);
+        return new User(nationalId, name, dateOfBirth, phone, email, address, drivingLicense, wallet, password, roleId);
     }
 
-    public List<User> loadEmployee() {
+    public List<User> loadUser() {
         ArrayList<User> list = new ArrayList<>();
         String sql = "Select * from [User] ";
         PreparedStatement ps = null;
@@ -91,18 +97,72 @@ public class UserDAO {
         return null;
     }
 
+    public User checkById(String input) {
+        //init
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String findUserSQL = "  SELECT * FROM [user] WHERE [national_id]=? ";
+
+        //connect to db
+        try (Connection con = DBUtils.getConnection()) {
+            //find user by id
+            ps = con.prepareStatement(findUserSQL);
+            ps.setString(1, input);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                return getUserFromResultSet(rs);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        //if no email found - return null
+        return null;
+    }
+
+    public void save(User t) {
+        PreparedStatement ps = null;
+        String addUserSQL = "insert into [user] values (?,?,null,?,?,null,null,null,?,?)";
+
+        try (Connection con = DBUtils.getConnection()) {
+            ps = con.prepareStatement(addUserSQL);
+            ps.setString(1, t.getNationalId());
+            ps.setString(2, t.getName());
+            ps.setString(3, t.getPhone());
+            ps.setString(4, t.getEmail());
+            ps.setString(5, t.getPassword());
+            ps.setInt(6, t.getRoleId());
+
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+    }
 
     public static void main(String[] args) {
         UserDAO ud = new UserDAO();
-        List<User> list = ud.loadEmployee();
-//        System.out.println(list.size());
+
+
+        User u = new User();
+        u.setName("Cuong");
+        u.setPhone("01241231241");
+        u.setEmail("abcxyz@gmail.com");
+        u.setPassword("1");
+        u.setNationalId("1125124125123");
+        u.setRoleId(0);
+
+        ud.save(u);
+        List<User> list = ud.loadUser();
+
+        System.out.println(list.size());
 //
 //        for (User u:list
 //             ) {
 //            System.out.println(u.toString());
 //        }
 
-        User u = ud.login("mineluciferlol@gmail.com","1");
-        System.out.println(u.toString());
+//        User u = ud.login("mineluciferlol@gmail.com","1");
+//        System.out.println(u.toString());
     }
 }

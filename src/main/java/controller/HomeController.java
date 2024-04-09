@@ -31,11 +31,11 @@ public class HomeController extends HttpServlet {
             switch (user.getRoleId()) {
                 // Customer
                 case 0:
-                    response.sendRedirect("");
+                    response.sendRedirect("customer");
                     break;
                 // Car Owner
                 case 1:
-                    response.sendRedirect("");
+                    response.sendRedirect("car-owner");
                     break;
             }
         } else request.getRequestDispatcher("views/home.jsp").forward(request, response);

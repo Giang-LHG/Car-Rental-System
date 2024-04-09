@@ -1,23 +1,23 @@
 package com.fa.carrentalsystem.model;
 
 public class CarModel {
-    private int id;
+    private Integer id;
     private String name;
-    private int parentId;
+    private Integer parentId;
     private String type;
 
-    public CarModel(int id, String name, int parentId, String type) {
+    public CarModel(Integer id, String name, Integer parentId, String type) {
         this.id = id;
         this.name = name;
         this.parentId = parentId;
         this.type = type;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -29,11 +29,11 @@ public class CarModel {
         this.name = name;
     }
 
-    public int getParentId() {
+    public Integer getParentId() {
         return parentId;
     }
 
-    public void setParentId(int parentId) {
+    public void setParentId(Integer parentId) {
         this.parentId = parentId;
     }
 
@@ -44,4 +44,10 @@ public class CarModel {
     public void setType(String type) {
         this.type = type;
     }
+
+	@Override
+	public String toString() {
+		return "CarModel [id=" + id + ", name=" + name + ", parentId=" + parentId + ", type=" + type + "]\n";
+	}
+    
 }
