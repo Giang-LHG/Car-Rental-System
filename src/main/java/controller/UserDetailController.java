@@ -49,13 +49,14 @@ public class UserDetailController extends HttpServlet {
         User user = (User) session.getAttribute("user");
         String userNationalId = user.getNationalId();
 
+        request.setCharacterEncoding("UTF-8");
         String dob = request.getParameter("dateOfBirth");
         String drivingLicense = request.getParameter("drivingLicence");
         String address = request.getParameter("location1") + " " +
                 request.getParameter("location2") + " " +
                 request.getParameter("location3") + " " +
                 request.getParameter("detailLocation");
-
+        System.out.println(address);
         pd.addProf(dob, address, drivingLicense, userNationalId);
 
         request.getSession().setAttribute("success", "Profile completed! Please enjoy Car Rental.");
