@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <html>
 <head>
-    <title>Personal Infor</title>
+    <title>Personal Information</title>
 </head>
 <body>
 <jsp:include page="../../header.jsp"></jsp:include>
@@ -66,7 +66,7 @@
             </div>
 
             <div class="form-submit p-5 border">
-                <form action="userDetail?action=addProf" method="post">
+                <form>
                     <div class="row">
                         <div class="col">
                             <div class="mb-3">
@@ -155,10 +155,10 @@
                         </div>
                         <div class="col">
                             <div class="mb-3">
-                                <label for="drivingLicence" class="form-label fw-bold"
+                                <label for="drivingLicense" class="form-label fw-bold"
                                 >Driving licence</label
                                 >
-                                <input class="form-control" type="file" id="drivingLicence" name="drivingLicence" required/>
+                                <input class="form-control" type="file" id="drivingLicense" name="drivingLicence" />
                             </div>
                         </div>
                     </div>
@@ -191,7 +191,7 @@
                                         <input
                                                 type="text"
                                                 class="form-control"
-                                                id="exampleFormControlInput1"
+                                                id="detailLocation"
                                                 name="detailLocation"
                                                 placeholder="Detail address"
                                         />
@@ -203,9 +203,10 @@
                     <div class="d-flex justify-content-center">
                         <input type="reset" value="Discard" class="m-2 p-2" onclick="resetVar()"/>
                         <button
-                                type="submit"
+                                type="button"
                                 value="Save"
                                 class="m-2 p-2 bg-primary bg-gradient"
+                                onclick="submitFormProfile()"
                                 >Save
                         </button>
                     </div>

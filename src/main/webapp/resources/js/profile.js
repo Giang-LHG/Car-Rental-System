@@ -87,3 +87,35 @@ function resetVar() {
         }
     }
 }
+
+function submitFormProfile(){
+    let dob = document.getElementById("dateOfBirth");
+    let drivingLicense = document.getElementById("drivingLicense").files[0];
+    let city = document.getElementById("province");
+    let district = document.getElementById("district");
+    let commune = document.getElementById("ward");
+    let detail = document.getElementById("detailLocation");
+
+    let xhr = new XMLHttpRequest();
+    let xhr2 = new XMLHttpRequest();
+    let data = new FormData();
+    data.append("drivingLicense",drivingLicense);
+    console.log(data)
+    xhr.open("POST" ,"userDetail" ,true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
+    xhr.send(encodeURI(`action=addProf&dateOfBirth=${dob.value.trim()}
+                            &location1=${city.value.trim()}&location2=${district.value.trim()}&location3=${commune.value.trim()}
+                            &detailLocation=${detail.value.trim()}`));
+
+    xhr2.open("POST" ,"userDetail?action=addLicense" ,true);
+    // xhr2.setRequestHeader("Content-Type", "application/multipart/form-data;charset=UTF-8");
+    xhr2.send(data);
+
+    xhr.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            //window.location.href = "/Car_Rental_System";
+        } else if (this.readyState === 3 && this.status === 500) {
+            console.log("error")
+        }
+    };
+}
