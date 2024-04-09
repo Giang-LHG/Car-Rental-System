@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page isELIgnored="false" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <meta charset="UTF-8" />
@@ -19,46 +21,31 @@
 <body>
 
         <div >
-            <p>Mileage:</p>
-            <p>Fuel consumption: 18 liter/100 km</p>
-            <p>Address:</p>
-            <p>Note: Full address will be available after you've paid the deposit to rent</p>
+            <p>Mileage: ${Car.mileage}</p>
+            <p>Fuel consumption: ${Car.fuelConsumption} liter/100 km</p>
+            <p>Address: ${Car.address}</p>
+<!--             <p>Note: Full address will be available after you've paid the deposit to rent</p> -->
             <p>Description:</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p>${Car.descriptions}</p>
             <div>
                 <p>Additional functions:</p>
-                <div>
-                    <input type="checkbox" id="bluetooth" checked />
-                    <label for="bluetooth">Bluetooth</label>
-                </div>
-                <div>
-                    <input type="checkbox" id="gps" />
-                    <label for="gps">GPS</label>
-                </div>
-                <div>
-                    <input type="checkbox" id="camera" />
-                    <label for="camera">Camera</label>
-                </div>
-                <div>
-                    <input type="checkbox" id="sunroof" checked />
-                    <label for="sunroof">Sun roof</label>
-                </div>
-                <div>
-                    <input type="checkbox" id="child-lock" checked />
-                    <label for="child-lock">Child lock</label>
-                </div>
-                <div>
-                    <input type="checkbox" id="child-seat" checked />
-                    <label for="child-seat">Child seat</label>
-                </div>
-                <div>
-                    <input type="checkbox" id="dvd" />
-                    <label for="dvd">DVD</label>
-                </div>
-                <div>
-                    <input type="checkbox" id="usb" />
-                    <label for="usb">USB</label>
-                </div>
+                <c:forEach var="item" items="${listFunctions}">
+	                <div>
+	                	<c:set var="check" value="false"></c:set>
+	                	<c:forEach var="function" items="${functionsOfCar}">
+	                		<c:if test="${function.id==item.id}">
+	                			<c:set var="check" value="true"></c:set>
+	                		</c:if>
+	                	</c:forEach>
+	                	<c:if test="${check eq true}">
+	                    	<input type="checkbox" name="function" value="${item.id}" checked disabled="disabled"/>${item.name }
+	                    </c:if>
+	                	<c:if test="${check eq false}">
+	                    	<input type="checkbox" name="function" value="${item.id}" disabled="disabled"/>${item.name }
+	                    </c:if>
+	                </div>
+                </c:forEach>
+                
             </div>
         </div>
 

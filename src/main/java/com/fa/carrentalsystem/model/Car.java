@@ -47,6 +47,20 @@ public class Car {
 		this.images = images;
 		this.ownerId = ownerId;
 	}
+	
+	public Car(String licensePlate, CarModel brand, CarModel model, int productionYear, Double basePrice,
+			Double deposit, String address, String images) {
+		super();
+		this.licensePlate = licensePlate;
+		this.brand = brand;
+		this.model = model;
+		this.productionYear = productionYear;
+		this.basePrice = basePrice;
+		this.deposit = deposit;
+		this.address = address;
+		this.images = images;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -169,7 +183,7 @@ public class Car {
 				+ ", fuelConsumption=" + fuelConsumption + ", basePrice=" + basePrice + ", deposit=" + deposit
 				+ ", address=" + address + ", descriptions=" + descriptions + ", additionalFunctionId="
 				+ additionalFunctionId + ", termOfUseId=" + termOfUseId + ", images=" + images + ", ownerId=" + ownerId
-				+ "]";
+				+ "]\n";
 	}
 	
 }

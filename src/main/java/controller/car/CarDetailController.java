@@ -7,6 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.BookingDAO;
+import dao.CarDAO;
+import dao.FeedbackDAO;
+
 /**
  * Servlet implementation class CarDetailController
  */
@@ -27,7 +31,16 @@ public class CarDetailController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher(CAR_DETAIL_PAGE).forward(request, response);
+		String licensePlate = request.getParameter("licensePlate");
+		CarDAO carDao = new CarDAO();
+		FeedbackDAO fDao = new FeedbackDAO();
+		BookingDAO bDao = new BookingDAO();
+//		request.setAttribute("licensePlate", licensePlate);
+		request.setAttribute("Car", carDao.getCar(licensePlate));
+		request.setAttribute("RatingPoint", fDao.getRatingPoint(licensePlate));
+		request.setAttribute("rides", bDao.getRides(licensePlate));
+		request.setAttribute("status", bDao.getStatus(licensePlate));
+		request.getRequestDispatcher(CAR_DETAIL_PAGE+"?licensePlate="+licensePlate).forward(request, response);
 	}
 
 	/**

@@ -155,7 +155,7 @@ public class AuthenticateController extends HttpServlet {
         }
     }
 
-    protected void doPost_Register(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, GeneralSecurityException, MessagingException, javax.mail.MessagingException {
+    protected void doPost_Register(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, GeneralSecurityException, MessagingException,javax.mail.MessagingException {
         //init
         UserDAO ud = new UserDAO();
         ValidatorUtils vu = new ValidatorUtils();
