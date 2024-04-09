@@ -12,9 +12,9 @@ public class User {
     private String drivingLicense;
     private Double wallet;
     private String password;
-    private int roleId;
+    private Integer roleId;
 
-    public User(String nationalId, String name, LocalDate dateOfBirth, String phone, String email, String address, String drivingLicense, Double wallet, String password, int roleId) {
+    public User(String nationalId, String name, LocalDate dateOfBirth, String phone, String email, String address, String drivingLicense, Double wallet, String password, Integer roleId) {
         this.nationalId = nationalId;
         this.name = name;
         this.dateOfBirth = dateOfBirth;
@@ -102,11 +102,11 @@ public class User {
         this.password = password;
     }
 
-    public int getRoleId() {
+    public Integer getRoleId() {
         return roleId;
     }
 
-    public void setRoleId(int roleId) {
+    public void setRoleId(Integer roleId) {
         this.roleId = roleId;
     }
 

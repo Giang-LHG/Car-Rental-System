@@ -3,16 +3,16 @@ package com.fa.carrentalsystem.model;
 import java.time.LocalDateTime;
 
 public class Booking {
-    private int bookingNo;
+    private Integer bookingNo;
     private LocalDateTime startDateTime;
     private LocalDateTime endDateTime;
     private String driversInformation;
-    private int paymentMethod;
-    private int status;
+    private Integer paymentMethod;
+    private Integer status;
     private String customerId;
     private String licensePlate;
 
-    public Booking(int bookingNo, LocalDateTime startDateTime, LocalDateTime endDateTime, String driversInformation, int paymentMethod, int status, String customerId, String licensePlate) {
+    public Booking(Integer bookingNo, LocalDateTime startDateTime, LocalDateTime endDateTime, String driversInformation, Integer paymentMethod, Integer status, String customerId, String licensePlate) {
         this.bookingNo = bookingNo;
         this.startDateTime = startDateTime;
         this.endDateTime = endDateTime;
@@ -23,11 +23,11 @@ public class Booking {
         this.licensePlate = licensePlate;
     }
 
-    public int getBookingNo() {
+    public Integer getBookingNo() {
         return bookingNo;
     }
 
-    public void setBookingNo(int bookingNo) {
+    public void setBookingNo(Integer bookingNo) {
         this.bookingNo = bookingNo;
     }
 
@@ -55,19 +55,19 @@ public class Booking {
         this.driversInformation = driversInformation;
     }
 
-    public int getPaymentMethod() {
+    public Integer getPaymentMethod() {
         return paymentMethod;
     }
 
-    public void setPaymentMethod(int paymentMethod) {
+    public void setPaymentMethod(Integer paymentMethod) {
         this.paymentMethod = paymentMethod;
     }
 
-    public int getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 

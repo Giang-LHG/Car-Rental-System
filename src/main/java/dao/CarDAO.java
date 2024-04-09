@@ -16,6 +16,7 @@ import com.fa.carrentalsystem.model.CarModel;
 import utils.DBUtils;
 
 public class CarDAO {
+	//thu
 	private Car getDetailCarFromResultSet(ResultSet rs) throws SQLException{
 	    String name = rs.getString("name");
 	    String licensePlate = rs.getString("license_plate");
@@ -39,6 +40,7 @@ public class CarDAO {
 	    Car car = new Car(name, licensePlate, brand, model, color, numberOfSeat, productionYear, transmissionType, fuelType, mileage, fuelConsumption, basePrice, deposit, address, descriptions, additionalFunctionId, termOfUseId, images, ownerId);
         return car;
     }
+	//thu
 	private Car getCarFromResultSet(ResultSet rs) throws SQLException{
 	    String licensePlate = rs.getString("license_plate");
 	    CarModel brand = new CarModel(rs.getInt("brand_id"), rs.getString("brand"), 0, null);
@@ -51,6 +53,7 @@ public class CarDAO {
 	    Car car = new Car(licensePlate, brand, model, productionYear, basePrice, deposit, address, images);
 	    return car;
     }
+	//thu
 	public Car getCar(String licensePlate) {
         String sql = "SELECT [Car].[name]\r\n"
         		+ ",[license_plate]\r\n"
@@ -99,6 +102,7 @@ public class CarDAO {
         return null;
     }
 
+	//thu
 	public ArrayList<Car> searchCar(String address,LocalDateTime pickUpDate,LocalDateTime dropOffDate, int offset, int fetch) {
         ArrayList<Car> list = new ArrayList<Car>();
 		String sql = "SELECT [Car].[license_plate]\r\n"
@@ -158,6 +162,7 @@ public class CarDAO {
         }
         return list;
     }
+	//thu
 	private String convertDate(LocalDateTime date) {
 		return date.toString().replace("T", " ");
 	}
