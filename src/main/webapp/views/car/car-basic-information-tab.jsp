@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ page isELIgnored="false" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,59 +12,39 @@
 	<div>
             <table>
                 <tr>
-                    <th>License plate:</th>
+                    <th>License plate: ${Car.licensePlate}</th>
                     <td></td>
                 </tr>
                 <tr>
-                    <th>Brand name:</th>
+                    <th>Brand name: ${Car.brand.name}</th>
                     <td></td>
                 </tr>
                 <tr>
-                    <th>Model:</th>
+                    <th>Model: ${Car.model.name}</th>
                     <td></td>
                 </tr>
                 <tr>
-                    <th>Production year:</th>
+                    <th>Production year: ${Car.productionYear}</th>
                     <td></td>
                 </tr>
                 <tr>
-                    <th>No. of seats:</th>
+                    <th>No. of seats: ${Car.numberOfSeat.name}</th>
                     <td></td>
                 </tr>
                 <tr>
-                    <th>Transmission:</th>
+                    <th>Transmission:
+	                    <c:if test="${Car.transmissionType eq false }">manual</c:if>
+	                    <c:if test="${Car.transmissionType eq true }">auto</c:if>
+                    </th>
                     <td></td>
                 </tr>
                 <tr>
-                    <th>Fuel:</th>
+                    <th>Fuel:
+	                    <c:if test="${Car.fuelType eq false }">gasoline </c:if>
+	                    <c:if test="${Car.fuelType eq true }">diesel</c:if></th>
                     <td></td>
                 </tr>
             </table>
-            <table class="table-striped">
-            <thead class="table-secondary">
-                <tr>
-                    <th>No</th>
-                    <th>Name</th>
-                    <th>Note</th>
-                </tr>
-			</thead>
-                <tr>
-                    <td>1</td>
-                    <td>Registration paper</td>
-                    <td>Verified</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Certificate of inspection</td>
-                    <td>Verified</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Insurance</td>
-                    <td>Not available</td>
-                </tr>
-            </table>
-            <p>Note: Documents will be available for viewing after you've paid the deposit to rent.</p>
 	</div>
 </body>
 </html>

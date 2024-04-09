@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page isELIgnored="false" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <meta charset="UTF-8" />
@@ -75,16 +77,20 @@
     <div class="car-details">
         <img src="car-image.png" alt="Car Image">
         <div>
-            <h2>Nissan Navara El 2017</h2>
+            <h2>${Car.name}</h2>
+            <input type="hidden" name="licensePlate" id="licensePlate" value="${Car.licensePlate}">
             <button>Rent now</button>
             <p class="rating">&#9733;&#9733;&#9733;&#9733;&#9733; (No ratings yet)</p>
-            <p>No. of rides: 0</p>
-            <p>Price: 900k/day</p>
-            <p>Locations: Cau Giay, Hanoi</p>
-            <p class="status">Available</p>
+            <p>No. of rides: ${rides}</p>
+            <p>Price: ${Car.basePrice}VNĐ/day</p>
+            <p>Locations: ${Car.address}</p>
+            <p>Status: 
+            	<c:if test="${status eq true }">Avaliable</c:if>
+            	<c:if test="${status eq false }">Unavaliable</c:if>
+            </p>
         </div>
     </div>
-    <div class="tabbed-content">
+    <div class="tabbed-content" id="tabbed-content">
         <ul>
             <li class="tab active " id="basic-info-tab">Basic Information</li>
             <li class="tab" id="detail-tab">Details</li>

@@ -13,7 +13,7 @@ import com.fa.carrentalsystem.model.User;
 
 import utils.DBUtils;
 
-public class RatingDAO {
+public class FeedbackDAO {
 	//thu
 	private Feedback getFeedback(ResultSet rs) throws SQLException {
 	    int id = rs.getInt("id");

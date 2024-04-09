@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page isELIgnored="false" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <meta charset="UTF-8" />
@@ -18,26 +20,26 @@
 </head>
 <body>
         <div>
-            <p>Base price: <input type="text" value="900,000"/> VND/Day</p>
-            <p>Required deposit: <input type="text" value="15,000,000"/> VND</p>
+            <p>Base price: ${Car.basePrice} VND/day</p>
+            <p>Required deposit: ${Car.deposit} VND</p>
             <div>
                 <p>Terms of use:</p>
-                <div>
-                    <input type="checkbox" id="no-smoking" checked/>
-                    <label for="no-smoking">No smoking</label>
-                </div>
-                <div>
-                    <input type="checkbox" id="no-pet" checked/>
-                    <label for="no-pet">No pet</label>
-                </div>
-                <div>
-                    <input type="checkbox" id="no-food"/>
-                    <label for="no-food">No food in car</label>
-                </div>
-                <div>
-                    <input type="checkbox" id="other"/>
-                    <label for="other">Other</label>
-                </div>
+                <c:forEach var="item" items="${listTOU}">
+	                <div>
+	                	<c:set var="check" value="false"></c:set>
+	                	<c:forEach var="function" items="${TOUOfCar}">
+	                		<c:if test="${function.id==item.id}">
+	                			<c:set var="check" value="true"></c:set>
+	                		</c:if>
+	                	</c:forEach>
+	                	<c:if test="${check eq true}">
+	                    	<input type="checkbox" name="function" value="${item.id}" checked disabled="disabled"/>${item.name }
+	                    </c:if>
+	                	<c:if test="${check eq false}">
+	                    	<input type="checkbox" name="function" value="${item.id}" disabled="disabled"/>${item.name }
+	                    </c:if>
+	                </div>
+                </c:forEach>
             </div>
         </div>
 

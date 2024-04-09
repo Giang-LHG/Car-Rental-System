@@ -1,8 +1,19 @@
 $(document).ready(function(){
+		$.ajax({
+			method: 'GET',
+			url: 'car-basic-infomation-tab',
+			data:{licensePlate: document.getElementById('licensePlate').value},
+			success: function(response){
+				$('#tab-content').html(response);
+				disableActive();
+				currentActive(document.getElementById('basic-info-tab'));
+			}
+		});
 	$('#basic-info-tab').click(function(){
 		$.ajax({
 			method: 'GET',
 			url: 'car-basic-infomation-tab',
+			data:{licensePlate: document.getElementById('licensePlate').value},
 			success: function(response){
 				$('#tab-content').html(response);
 				disableActive();
@@ -14,6 +25,7 @@ $(document).ready(function(){
 		$.ajax({
 			method: 'GET',
 			url: 'car-detail-tab',
+			data:{licensePlate: document.getElementById('licensePlate').value},
 			success: function(response){
 				$('#tab-content').html(response);
 				disableActive();
@@ -25,6 +37,7 @@ $(document).ready(function(){
 		$.ajax({
 			method: 'GET',
 			url: 'car-terms-of-use-tab',
+			data:{licensePlate: document.getElementById('licensePlate').value},
 			success: function(response){
 				$('#tab-content').html(response);
 				disableActive();
