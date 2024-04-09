@@ -2,7 +2,7 @@ package controller;
 
 import com.fa.carrentalsystem.model.Profile;
 import com.fa.carrentalsystem.model.User;
-//import com.sun.xml.internal.messaging.saaj.packaging.mime.MessagingException;
+import com.sun.xml.internal.messaging.saaj.packaging.mime.MessagingException;
 import dao.ProfileDAO;
 import dao.UserDAO;
 import utils.GmailUtils;
@@ -65,11 +65,11 @@ public class AuthenticateController extends HttpServlet {
         } else if (action.equalsIgnoreCase("manual")) {
             doPost_ManualLogin(request, response);
         } else if (action.equalsIgnoreCase("register")) {
-//            try {
-//                doPost_Register(request, response);
-//            } catch (MessagingException | GeneralSecurityException | javax.mail.MessagingException ex) {
-//                log(ex.toString());
-//            }
+            try {
+                doPost_Register(request, response);
+            } catch (MessagingException | GeneralSecurityException | javax.mail.MessagingException ex) {
+                log(ex.toString());
+            }
         }
     }
 
@@ -151,7 +151,7 @@ public class AuthenticateController extends HttpServlet {
         }
     }
 
-    protected void doPost_Register(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, GeneralSecurityException, javax.mail.MessagingException {
+    protected void doPost_Register(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, GeneralSecurityException, MessagingException,javax.mail.MessagingException {
         //init
         UserDAO ud = new UserDAO();
         ValidatorUtils vu = new ValidatorUtils();
