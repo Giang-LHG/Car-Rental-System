@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Rent a car today!</title>
-    <jsp:include page="head.html"></jsp:include>
+    <jsp:include page="../../../head.html"></jsp:include>
     <style>
         /* Reset default margin and padding */
         * {
@@ -257,6 +257,6 @@
     </div>
 </main>
 
-<jsp:include page="footer.jsp"></jsp:include>
+<jsp:include page="../../../footer.jsp"></jsp:include>
 </body>
 </html>

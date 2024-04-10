@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Rent a car today!</title>
-    <jsp:include page="head.html"></jsp:include>
+    <jsp:include page="../../head.html"></jsp:include>
 </head>
 <body>
 <header>
@@ -94,6 +94,6 @@
         <button type="submit" class="submit" style="padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; background-color: #4caf50; color: #fff;">Submit</button>
     </div>
 </main>
-<jsp:include page="footer.jsp"></jsp:include>
+<jsp:include page="../../footer.jsp"></jsp:include>
 </body>
 </html>
