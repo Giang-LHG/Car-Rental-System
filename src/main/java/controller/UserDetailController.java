@@ -23,6 +23,7 @@ public class UserDetailController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
         req.setCharacterEncoding("UTF-8");
+        resp.setContentType("text/html;charset=UTF-8");
         User u = (User) req.getSession(false).getAttribute("user");
         if (u != null) {
             if (action.equalsIgnoreCase("profile")) {

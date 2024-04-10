@@ -6,6 +6,7 @@ import com.sun.xml.internal.messaging.saaj.packaging.mime.MessagingException;
 import dao.ProfileDAO;
 import dao.UserDAO;
 import utils.GmailUtils;
+import utils.StringUtils;
 import utils.ValidatorUtils;
 
 import javax.servlet.ServletException;
@@ -159,6 +160,7 @@ public class AuthenticateController extends HttpServlet {
         //init
         UserDAO ud = new UserDAO();
         ValidatorUtils vu = new ValidatorUtils();
+        request.setCharacterEncoding("UTF-8");
         //get attributes for new user
         User temp = new User();
         GmailUtils gu = new GmailUtils();
@@ -170,6 +172,9 @@ public class AuthenticateController extends HttpServlet {
         String password = request.getParameter("registerPassword").trim();
         String rePass = request.getParameter("confirmPassword").trim();
         String roleId = request.getParameter("role").trim();
+
+        String name2 = StringUtils.convertToUTF(name);
+        System.out.println(name2);
 
         //validation
         boolean check = vu.EmailValidator(email) && vu.PasswordValidator(password);
@@ -184,7 +189,7 @@ public class AuthenticateController extends HttpServlet {
                 request.setAttribute("notify", "Registered successfully!");
 
                 //add step 1
-                temp.setName(name);
+                temp.setName(name2);
                 temp.setEmail(email);
                 temp.setPhone(phone);
                 temp.setNationalId(nationalID);
