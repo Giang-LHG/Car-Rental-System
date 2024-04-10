@@ -92,7 +92,7 @@
     </style>
 </head>
 <body>
-<jsp:include page="../../../header.jsp"></jsp:include>
+<jsp:include page="${pageContext.request.contextPath}/header.jsp"></jsp:include>
 <main>
     <h2>Edit car details</h2>
     <div class="car-details">
@@ -184,6 +184,6 @@
         <p>Note: Please contact us if you need to update your car's basic information</p>
 
 </main>
-<jsp:include page="../../../footer.jsp"></jsp:include>
+<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>
