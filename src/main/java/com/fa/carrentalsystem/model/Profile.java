@@ -2,33 +2,23 @@ package com.fa.carrentalsystem.model;
 
 import java.time.LocalDate;
 
-public class CarOwner {
-    private int nationalId;
+public class Profile {
     private String name;
     private LocalDate dateOfBirth;
     private String phone;
     private String email;
-    private String address;
+    private String nationalId;
     private String drivingLicense;
-    private Double wallet;
+    private String address;
 
-    public CarOwner(int nationalId, String name, LocalDate dateOfBirth, String phone, String email, String address, String drivingLicense, Double wallet) {
-        this.nationalId = nationalId;
+    public Profile(String name, LocalDate dateOfBirth, String phone, String email, String nationalId, String drivingLicense, String address) {
         this.name = name;
         this.dateOfBirth = dateOfBirth;
         this.phone = phone;
         this.email = email;
-        this.address = address;
-        this.drivingLicense = drivingLicense;
-        this.wallet = wallet;
-    }
-
-    public int getNationalId() {
-        return nationalId;
-    }
-
-    public void setNationalId(int nationalId) {
         this.nationalId = nationalId;
+        this.drivingLicense = drivingLicense;
+        this.address = address;
     }
 
     public String getName() {
@@ -63,12 +53,12 @@ public class CarOwner {
         this.email = email;
     }
 
-    public String getAddress() {
-        return address;
+    public String getNationalId() {
+        return nationalId;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setNationalId(String nationalId) {
+        this.nationalId = nationalId;
     }
 
     public String getDrivingLicense() {
@@ -79,27 +69,24 @@ public class CarOwner {
         this.drivingLicense = drivingLicense;
     }
 
-    public Double getWallet() {
-        return wallet;
+    public String getAddress() {
+        return address;
     }
 
-    public void setWallet(Double wallet) {
-        this.wallet = wallet;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     @Override
     public String toString() {
-        return "CarOwner{" +
-                "nationalId=" + nationalId +
-                ", name='" + name + '\'' +
+        return "Profile{" +
+                "name='" + name + '\'' +
                 ", dateOfBirth=" + dateOfBirth +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
-                ", address='" + address + '\'' +
+                ", nationalId='" + nationalId + '\'' +
                 ", drivingLicense='" + drivingLicense + '\'' +
-                ", wallet=" + wallet +
+                ", address='" + address + '\'' +
                 '}';
     }
 }
-
-

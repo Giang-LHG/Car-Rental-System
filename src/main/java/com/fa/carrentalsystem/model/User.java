@@ -2,8 +2,8 @@ package com.fa.carrentalsystem.model;
 
 import java.time.LocalDate;
 
-public class Customer {
-    private int nationalId;
+public class User {
+    private String nationalId;
     private String name;
     private LocalDate dateOfBirth;
     private String phone;
@@ -11,8 +11,10 @@ public class Customer {
     private String address;
     private String drivingLicense;
     private Double wallet;
+    private String password;
+    private Integer roleId;
 
-    public Customer(int nationalId, String name, LocalDate dateOfBirth, String phone, String email, String address, String drivingLicense, Double wallet) {
+    public User(String nationalId, String name, LocalDate dateOfBirth, String phone, String email, String address, String drivingLicense, Double wallet, String password, Integer roleId) {
         this.nationalId = nationalId;
         this.name = name;
         this.dateOfBirth = dateOfBirth;
@@ -21,13 +23,18 @@ public class Customer {
         this.address = address;
         this.drivingLicense = drivingLicense;
         this.wallet = wallet;
+        this.password = password;
+        this.roleId = roleId;
     }
 
-    public int getNationalId() {
+    public User() {
+    }
+
+    public String getNationalId() {
         return nationalId;
     }
 
-    public void setNationalId(int nationalId) {
+    public void setNationalId(String     nationalId) {
         this.nationalId = nationalId;
     }
 
@@ -87,9 +94,25 @@ public class Customer {
         this.wallet = wallet;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Integer getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(Integer roleId) {
+        this.roleId = roleId;
+    }
+
     @Override
     public String toString() {
-        return "Customer{" +
+        return "User{" +
                 "nationalId=" + nationalId +
                 ", name='" + name + '\'' +
                 ", dateOfBirth=" + dateOfBirth +
@@ -98,6 +121,8 @@ public class Customer {
                 ", address='" + address + '\'' +
                 ", drivingLicense='" + drivingLicense + '\'' +
                 ", wallet=" + wallet +
+                ", password='" + password + '\'' +
+                ", role_id=" + roleId +
                 '}';
     }
 }
