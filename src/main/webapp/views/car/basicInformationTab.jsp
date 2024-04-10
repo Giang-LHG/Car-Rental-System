@@ -184,6 +184,6 @@
         <p>Note: Please contact us if you need to update your car's basic information</p>
 
 </main>
-<jsp:include page="../../../footer.jsp"></jsp:include>
+<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>

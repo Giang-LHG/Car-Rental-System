@@ -111,7 +111,7 @@
     </style>
 </head>
 <body>
-<jsp:include page="../../../header.jsp"></jsp:include>
+<jsp:include page="../header.jsp"></jsp:include>
 <main>
     <h2>Edit car details</h2>
     <div class="car-details">
@@ -273,6 +273,6 @@
     </div>
 
 </main>
-<jsp:include page="../../../footer.jsp"></jsp:include>
+<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>
