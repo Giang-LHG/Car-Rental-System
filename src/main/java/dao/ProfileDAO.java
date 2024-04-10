@@ -4,10 +4,7 @@ import com.fa.carrentalsystem.model.Profile;
 import com.fa.carrentalsystem.model.User;
 import utils.DBUtils;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.time.LocalDate;
 
 public class ProfileDAO {
@@ -50,4 +47,38 @@ public class ProfileDAO {
         //if no email found - return null
         return null;
     }
+
+    public void addProf(String dob,String address,String nationalId) {
+        // Init
+        PreparedStatement ps = null;
+        String getUserLoginSQL = "  UPDATE [User] set date_of_birth = ?, address = ? where national_id = ?";
+
+        // Connect to db
+        try ( Connection con = DBUtils.getConnection()) {
+            ps = con.prepareStatement(getUserLoginSQL);
+            ps.setObject(1, LocalDate.parse(dob));
+            ps.setString(2, address);
+            ps.setString(3, nationalId);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void addLicense(String driving_license,String nationalId) {
+        // Init
+        PreparedStatement ps = null;
+        String getUserLoginSQL = "  UPDATE [User] set driving_license = ? where national_id = ?";
+
+        // Connect to db
+        try ( Connection con = DBUtils.getConnection()) {
+            ps = con.prepareStatement(getUserLoginSQL);
+            ps.setString(1, driving_license);
+            ps.setString(2, nationalId);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
 }

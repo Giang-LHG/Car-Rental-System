@@ -49,7 +49,7 @@
                 <div class="notif" style="color: red">${requestScope.notification}</div>
                 <p class="signup-link">
                     Don't have an account?
-                    <a href="#" class="signup-link link"> Forgot your password?(???)</a>
+                    <a href="<%=request.getContextPath()%>/auth?action=forgot" class="signup-link link"> Forgot your password?(???)</a>
                 </p>
                 <!-- Modal bootstrap 5 -->
                 <!-- Button to Open the Modal -->
