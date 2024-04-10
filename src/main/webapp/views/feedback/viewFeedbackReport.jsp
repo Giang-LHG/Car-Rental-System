@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rent a car today!</title>
-    <jsp:include page="head.html"></jsp:include>
+    <jsp:include page="../head.html"></jsp:include>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -256,6 +256,6 @@
     </div>
 </main>
 
-<jsp:include page="footer.jsp"></jsp:include>
+<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>
