@@ -5,10 +5,11 @@
   Time: 2:01 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+<meta charset="UTF-8">
 <html>
 <head>
-    <title>Personal Infor</title>
+    <title>Personal Information</title>
 </head>
 <body>
 <jsp:include page="../../header.jsp"></jsp:include>
@@ -65,7 +66,7 @@
             </div>
 
             <div class="form-submit p-5 border">
-                <form action="#" method="#">
+                <form>
                     <div class="row">
                         <div class="col">
                             <div class="mb-3">
@@ -78,6 +79,8 @@
                                         type="text"
                                         class="form-control"
                                         id="fullName"
+                                        value="${sessionScope.username}"
+                                        readonly
                                 />
                             </div>
                         </div>
@@ -92,7 +95,9 @@
                                         type="date"
                                         class="form-control"
                                         id="dateOfBirth"
+                                        name="dateOfBirth"
                                         placeholder="/  /"
+                                        required
                                 />
                             </div>
                         </div>
@@ -109,6 +114,8 @@
                                         type="text"
                                         class="form-control"
                                         id="phoneNumber"
+                                        value="${sessionScope.user.phone}"
+                                        readonly
                                 />
                             </div>
                         </div>
@@ -123,6 +130,8 @@
                                         type="email"
                                         class="form-control"
                                         id="email"
+                                        value="${sessionScope.user.email}"
+                                        readonly
                                 />
                             </div>
                         </div>
@@ -136,18 +145,20 @@
                                 >National ID No:</label
                                 >
                                 <input
-                                        type="email"
+                                        type="text"
                                         class="form-control"
                                         id="nationalID"
+                                        value="${sessionScope.user.nationalId}"
+                                        readonly
                                 />
                             </div>
                         </div>
                         <div class="col">
                             <div class="mb-3">
-                                <label for="drivingLicence" class="form-label fw-bold"
+                                <label for="drivingLicense" class="form-label fw-bold"
                                 >Driving licence</label
                                 >
-                                <input class="form-control" type="file" id="drivingLicence" />
+                                <input class="form-control" type="file" id="drivingLicense" name="drivingLicence" />
                             </div>
                         </div>
                     </div>
@@ -155,33 +166,24 @@
                         <div class="col-6">
                             <div class="col-md">
                                 <div>
-                                    <label for="location" class="form-label fw-bold"
+                                    <label for="province" class="form-label fw-bold"
                                     >Address</label
                                     >
                                     <div class="py-2">
-                                        <select class="form-select" id="location">
-                                            <option selected>Open this select menu</option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
+                                        <select class="form-select" id="province" name="location1" size="1">
+                                            <option selected="selected">City</option>
                                         </select>
                                     </div>
 
                                     <div class="py-2">
-                                        <select class="form-select" id="location1">
-                                            <option selected>Open this select menu</option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
+                                        <select class="form-select" id="district" name="location2" size="1">
+                                            <option selected >District</option>
                                         </select>
                                     </div>
 
                                     <div class="py-2">
-                                        <select class="form-select" id="location2">
-                                            <option selected>Open this select menu</option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
+                                        <select class="form-select" id="ward" name="location3" size="1">
+                                            <option selected >Commune</option>
                                         </select>
                                     </div>
 
@@ -189,8 +191,9 @@
                                         <input
                                                 type="text"
                                                 class="form-control"
-                                                id="exampleFormControlInput1"
-                                                placeholder="name@example.com"
+                                                id="detailLocation"
+                                                name="detailLocation"
+                                                placeholder="Detail address"
                                         />
                                     </div>
                                 </div>
@@ -198,12 +201,14 @@
                         </div>
                     </div>
                     <div class="d-flex justify-content-center">
-                        <input type="reset" value="Discord" class="m-2 p-2" />
-                        <input
-                                type="submit"
+                        <input type="reset" value="Discard" class="m-2 p-2" onclick="resetVar()"/>
+                        <button
+                                type="button"
                                 value="Save"
                                 class="m-2 p-2 bg-primary bg-gradient"
-                        />
+                                onclick="submitFormProfile()"
+                                >Save
+                        </button>
                     </div>
                 </form>
             </div>
@@ -212,4 +217,5 @@
 </section>
 <jsp:include page="../../footer.jsp"></jsp:include>
 </body>
+<script src="<%=request.getContextPath()%>/resources/js/profile.js"></script>
 </html>
