@@ -58,7 +58,7 @@
                 <h3>Looking for a vehicle?</h3>
                 <h3>You're at the right place</h3>
                 <p>choose between 100s private car for rent at realy low price</p>
-                <button class="bg-primary text-light p-2">
+                <button class="bg-primary text-light p-2" onclick="go()">
                     Find a rentalcar near you
                 </button>
             </div>
@@ -311,5 +311,10 @@
     </div>
 </section>
 <jsp:include page="footer.jsp"></jsp:include>
+<script>
+    function go() {
+        window.location.href = "<%=request.getContextPath()%>/search-car";
+    }
+</script>
 </body>
 </html>

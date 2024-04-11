@@ -48,10 +48,11 @@ public class Car {
 		this.ownerId = ownerId;
 	}
 	
-	public Car(String licensePlate, CarModel brand, CarModel model, int productionYear, Double basePrice,
+	public Car(String licensePlate, String name, CarModel brand, CarModel model, int productionYear, Double basePrice,
 			Double deposit, String address, String images) {
 		super();
 		this.licensePlate = licensePlate;
+		this.name = name;
 		this.brand = brand;
 		this.model = model;
 		this.productionYear = productionYear;
