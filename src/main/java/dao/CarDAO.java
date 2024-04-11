@@ -43,6 +43,7 @@ public class CarDAO {
 	//thu
 	private Car getCarFromResultSet(ResultSet rs) throws SQLException{
 	    String licensePlate = rs.getString("license_plate");
+		String name = rs.getString("name");
 	    CarModel brand = new CarModel(rs.getInt("brand_id"), rs.getString("brand"), 0, null);
 	    CarModel model = new CarModel(rs.getInt("model_id"), rs.getString("model"), 0, null);
 	    int productionYear = rs.getInt("production_year");
@@ -50,7 +51,7 @@ public class CarDAO {
 	    Double deposit = rs.getDouble("deposit");
 	    String address = rs.getString("address");
 	    String images = rs.getString("images");
-	    Car car = new Car(licensePlate, brand, model, productionYear, basePrice, deposit, address, images);
+	    Car car = new Car(licensePlate, name, brand, model, productionYear, basePrice, deposit, address, images);
 	    return car;
     }
 	//thu
@@ -105,42 +106,43 @@ public class CarDAO {
 	//thu
 	public ArrayList<Car> searchCar(String address,LocalDateTime pickUpDate,LocalDateTime dropOffDate, int offset, int fetch) {
         ArrayList<Car> list = new ArrayList<Car>();
-		String sql = "SELECT [Car].[license_plate]\r\n"
-				+ ",[brand_id]\r\n"
-				+ ",[model_id]\r\n"
-				+ ",[production_year]\r\n"
-				+ ",[base_price]\r\n"
-				+ ",[deposit]\r\n"
-				+ ",[address]\r\n"
-				+ ",[images]\r\n"
-				+ ",cm1.[name][brand]\r\n"
-				+ ",cm2.[name][model]\r\n"
-				+ "FROM [CAR_RENTAL].[dbo].[Car]\r\n"
-				+ "JOIN [CAR_RENTAL].[dbo].[Car Model] cm1 ON cm1.id=[Car].[brand_id] \r\n"
-				+ "JOIN [CAR_RENTAL].[dbo].[Car Model] cm2 ON cm2.id=[Car].[model_id] \r\n"
-				+ "LEFT JOIN [CAR_RENTAL].[dbo].[Booking] b ON b.license_plate=[Car].license_plate\r\n"
-				+ "WHERE address LIKE ?\r\n"
-				+ "AND Car.license_plate NOT IN \r\n"
-				+ "(SELECT [Car].[license_plate]\r\n"
-				+ "FROM [CAR_RENTAL].[dbo].[Car]\r\n"
-				+ "JOIN [CAR_RENTAL].[dbo].[Car Model] cm1 ON cm1.id=[Car].[brand_id] \r\n"
-				+ "JOIN [CAR_RENTAL].[dbo].[Car Model] cm2 ON cm2.id=[Car].[model_id] \r\n"
-				+ "LEFT JOIN [CAR_RENTAL].[dbo].[Booking] b ON b.license_plate=[Car].license_plate\r\n"
-				+ "WHERE (end_date_time>=? AND end_date_time<=?)\r\n"
-				+ "OR (start_date_time>=? AND start_date_time<=?)\r\n"
-				+ "group by [Car].[license_plate],[Car].[brand_id],[Car].[model_id] ,[production_year]\r\n"
-				+ ",[base_price]\r\n"
-				+ ",[deposit]\r\n"
-				+ ",[address]\r\n"
-				+ ",[images],cm1.[name],cm2.[name])\r\n"
-				+ "group by [Car].[license_plate],[Car].[brand_id],[Car].[model_id] ,[production_year]\r\n"
-				+ ",[base_price]\r\n"
-				+ ",[deposit]\r\n"
-				+ ",[address]\r\n"
-				+ ",[images],cm1.[name],cm2.[name]\r\n"
-				+ "ORDER BY [Car].[license_plate]\r\n"
-				+ "OFFSET ? ROWS\r\n"
-				+ "FETCH NEXT ? ROW ONLY\r\n";
+		String sql = "SELECT [Car].[license_plate],\n" +
+				"\t\t\t\t  [Car].[name]\n" +
+				"\t\t\t\t ,[brand_id]\n" +
+				"\t\t\t\t ,[model_id]\n" +
+				"\t\t\t\t ,[production_year]\n" +
+				"\t\t\t\t ,[base_price]\n" +
+				"\t\t\t\t ,[deposit]\n" +
+				"\t\t\t\t ,[address]\n" +
+				"\t\t\t\t ,[images]\n" +
+				"\t\t\t\t ,cm1.[name][brand]\n" +
+				"\t\t\t\t ,cm2.[name][model]\n" +
+				"\t\t\t\t FROM [CAR_RENTAL].[dbo].[Car]\n" +
+				"\t\t\t\t JOIN [CAR_RENTAL].[dbo].[Car Model] cm1 ON cm1.id=[Car].[brand_id] \n" +
+				"\t\t\t\t JOIN [CAR_RENTAL].[dbo].[Car Model] cm2 ON cm2.id=[Car].[model_id] \n" +
+				"\t\t\t\t LEFT JOIN [CAR_RENTAL].[dbo].[Booking] b ON b.license_plate=[Car].license_plate\n" +
+				"\t\t\t\t WHERE address LIKE ? \n" +
+				"\t\t\t\t AND Car.license_plate NOT IN \n" +
+				"\t\t\t\t (SELECT [Car].[license_plate]\n" +
+				"\t\t\t\t FROM [CAR_RENTAL].[dbo].[Car]\n" +
+				"\t\t\t\t JOIN [CAR_RENTAL].[dbo].[Car Model] cm1 ON cm1.id=[Car].[brand_id] \n" +
+				"\t\t\t\t JOIN [CAR_RENTAL].[dbo].[Car Model] cm2 ON cm2.id=[Car].[model_id] \n" +
+				"\t\t\t\t LEFT JOIN [CAR_RENTAL].[dbo].[Booking] b ON b.license_plate=[Car].license_plate\n" +
+				"\t\t\t\t WHERE (end_date_time>=? AND end_date_time<=?)\n" +
+				"\t\t\t\t OR (start_date_time>=? AND start_date_time<=?)\n" +
+				"\t\t\t\t group by [Car].[license_plate],[Car].[name],[Car].[brand_id],[Car].[model_id] ,[production_year]\n" +
+				"\t\t\t\t ,[base_price]\n" +
+				"\t\t\t\t ,[deposit]\n" +
+				"\t\t\t\t ,[address]\n" +
+				"\t\t\t\t ,[images],cm1.[name],cm2.[name])\n" +
+				"\t\t\t\t group by [Car].[license_plate],[Car].[name],[Car].[brand_id],[Car].[model_id] ,[production_year]\n" +
+				"\t\t\t\t ,[base_price]\n" +
+				"\t\t\t\t ,[deposit]\n" +
+				"\t\t\t\t ,[address]\n" +
+				"\t\t\t\t ,[images],cm1.[name],cm2.[name]\n" +
+				"\t\t\t\t ORDER BY [Car].[license_plate]\n" +
+				"\t\t\t\t OFFSET ? ROWS\n" +
+				"\t\t\t\t FETCH NEXT ? ROW ONLY";
         PreparedStatement ps = null;
         ResultSet rs = null;
 

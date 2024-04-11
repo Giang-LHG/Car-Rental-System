@@ -8,7 +8,9 @@ import java.util.logging.Logger;
 
 public class DBUtils {
     private static final String USERNAME = "sa";
+
     private static final String PASSWORD = "123456";
+
     private static final String DB_URL = "jdbc:sqlserver://localhost:1433;databaseName=CAR_RENTAL;trustServerCertificate=true;";
 
 
