@@ -70,6 +70,8 @@ public class AuthenticateController extends HttpServlet {
             } catch (MessagingException | GeneralSecurityException | javax.mail.MessagingException ex) {
                 log(ex.toString());
             }
+        } else if (action.equalsIgnoreCase("forgot")) {
+
         }
     }
 
@@ -134,7 +136,9 @@ public class AuthenticateController extends HttpServlet {
             session.setAttribute("username", user.getName());
             session.setMaxInactiveInterval(60 * 60);
             Profile p = profileDAO.check(user.getEmail());
-            if (p.getDateOfBirth() == null || p.getDrivingLicense() == null) {
+            if (p.getDateOfBirth() == null || p.getDrivingLicense() == null || p.getAddress() == null) {
+                request.setCharacterEncoding("UTF-8");
+                response.setCharacterEncoding("UTF-8");
                 response.sendRedirect("userDetail?action=addProfile");
             } else {
                 switch (user.getRoleId()) {
