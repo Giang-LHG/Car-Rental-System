@@ -162,6 +162,62 @@ public class CarDAO {
         }
         return list;
     }
+
+	//thu
+	public Boolean addCar(Car car) {
+        String sql = "\r\n"
+        		+ "INSERT INTO [dbo].[Car]\r\n"
+        		+ "           ([name]\r\n"
+        		+ "           ,[license_plate]\r\n"
+        		+ "           ,[brand_id]\r\n"
+        		+ "           ,[model_id]\r\n"
+        		+ "           ,[color_id]\r\n"
+        		+ "           ,[number_of_seats_id]\r\n"
+        		+ "           ,[production_year]\r\n"
+        		+ "           ,[transmission_type]\r\n"
+        		+ "           ,[fuel_type]\r\n"
+        		+ "           ,[mileage]\r\n"
+        		+ "           ,[fuel-consumption]\r\n"
+        		+ "           ,[base_price]\r\n"
+        		+ "           ,[deposit]\r\n"
+        		+ "           ,[address]\r\n"
+        		+ "           ,[description]\r\n"
+        		+ "           ,[additional_funtion_id]\r\n"
+        		+ "           ,[term_of_use_id]\r\n"
+        		+ "           ,[images]\r\n"
+        		+ "           ,[owner_id])\r\n"
+        		+ "     VALUES\r\n"
+        		+ "           (null,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try (Connection con = DBUtils.getConnection()) {
+            ps = con.prepareStatement(sql);
+            ps.setString(1, car.getLicensePlate());
+            ps.setString(2, car.getBrand().getId()+"");
+            ps.setString(3, car.getModel().getId()+"");
+            ps.setString(4, car.getColor().getId()+"");
+            ps.setString(5, car.getNumberOfSeat().getId()+"");
+            ps.setString(6, car.getProductionYear()+"");
+            ps.setString(7, car.isTransmissionType()+"");
+            ps.setString(8, car.isFuelType()+"");
+            ps.setString(9, car.getMileage()+"");
+            ps.setString(10, car.getFuelConsumption()+"");
+            ps.setString(11, car.getBasePrice()+"");
+            ps.setString(12, car.getDeposit()+"");
+            ps.setString(13, car.getAddress());
+            ps.setString(14, car.getDescriptions());
+            ps.setString(15, "0");
+            ps.setString(16, "0");
+            ps.setString(17, car.getImages());
+            ps.setString(18, car.getOwnerId());
+            rs = ps.executeQuery();
+            return true;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return false;
+    }
 	//thu
 	private String convertDate(LocalDateTime date) {
 		return date.toString().replace("T", " ");

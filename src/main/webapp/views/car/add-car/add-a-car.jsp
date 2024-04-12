@@ -26,10 +26,10 @@
 			</ul>
 		</div>
 	</div>
-	<div class="form-container">
+	<div id="form-container">
 
 	</div>
-	<script src="<%=request.getContextPath()%>/resources/js/car/add-a-car.js"></script>
 	<jsp:include page="../../footer.jsp"></jsp:include>
+	<script src="<%=request.getContextPath()%>/resources/js/car/add-a-car.js"></script>
 </body>
 </html>

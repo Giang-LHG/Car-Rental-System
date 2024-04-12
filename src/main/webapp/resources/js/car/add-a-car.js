@@ -1,121 +1,108 @@
-const xhttp = new XMLHttpRequest();
-xhttp.onreadystatechange = function () {
-    if (this.readyState === 4 && this.status === 200) {
-        // Typical action to be performed when the document is ready:
-        var data = xhttp.response;
-        data = JSON.parse(data);
-        var citySel = document.getElementById("province"),
-            districtSel = document.getElementById("district"),
-            communeSel = document.getElementById("ward");
-        for (let i = 0; i < data.province.length; i++) {
-            const options = document.createElement("option");
-            options.value = data.province[i].name;
-            options.innerHTML = data.province[i].name;
-            options.setAttribute("data-id", data.province[i].idProvince)
-            citySel.append(options);
-        }
 
-        citySel.onchange = function () {
-            districtSel.length = 1; // remove all options bar first
-            communeSel.length = 1; // remove all options bar first
-            if (this.selectedIndex < 1) return; // done
-            var optionProvince = citySel.getElementsByTagName("option");
-            var currentProvince;
-            for (let i = 0; i < optionProvince.length; i++) {
-                if (optionProvince[i].selected) {
-                    currentProvince = optionProvince[i];
-                    break;
-                }
-            }
-            for (let j = 0; j < data.district.length; j++) {
-                if (data.district[j].idProvince === currentProvince.dataset.id) {
-                    const options = document.createElement("option");
-                    options.value = data.district[j].name;
-                    options.innerHTML = data.district[j].name;
-                    options.setAttribute("data-id2", data.district[j].idDistrict);
-                    districtSel.append(options)
-                }
-            }
-        }
-
-        districtSel.onchange = function () {
-            communeSel.length = 1; // remove all options bar first
-            if (this.selectedIndex < 1) return; // done
-            var optionDistrict = districtSel.getElementsByTagName("option");
-            var currentDistrict;
-            for (let i = 0; i < optionDistrict.length; i++) {
-                if (optionDistrict[i].selected) {
-                    currentDistrict = optionDistrict[i];
-                    break;
-                }
-            }
-            for (let j = 0; j < data.commune.length; j++) {
-                if (data.commune[j].idDistrict === currentDistrict.dataset.id2) {
-                    const options = document.createElement("option");
-                    options.value = data.commune[j].name;
-                    options.innerHTML = data.commune[j].name;
-                    options.setAttribute("data-id3", data.commune[j].idCommune);
-                    communeSel.append(options)
-                }
-            }
-
-        }
-    }
-};
-xhttp.open("GET", "../../../resources/db.json", true);
-xhttp.send();
-
-function resetVar() {
-    var citySel = document.getElementById("province"),
-        districtSel = document.getElementById("district"),
-        communeSel = document.getElementById("ward");
-
-    var optionDistrict = districtSel.getElementsByTagName("option");
-
-    for (let i = 0; i < optionDistrict.length; i++) {
-        console.log(optionDistrict[i].dataset.id2 != null);
-        if (optionDistrict[i].dataset.id2 != null) {
-            console.log(optionDistrict[i].dataset.id2 != null)
-            optionDistrict[i].parentNode.removeChild(optionDistrict[i]);
-        }
-    }
-    console.log(optionDistrict);
-
-    for (let i = 0; i < optionDistrict.length; i++) {
-        if (optionDistrict[i].dataset.id2 != null) {
-            optionDistrict[i].remove();
-        }
-    }
+$(document).ready(function(){
+		$.ajax({
+			method: 'GET',
+			url: 'add-a-car?step=1',
+			success: function(response){
+				$('#form-container').html(response);
+				submitForm1();
+			}
+		});
+});
+let formvalue = "";
+function selectBrand(){
+	$.ajax({
+		method: 'GET',
+		url: 'add-a-car?step=1',
+		data:$('#form-add-car-1').serialize(),
+		success: function(response){
+			$('#form-container').html(response);
+			submitForm1();
+		}
+	});
+	
+}
+function submitForm1(){
+	formvalue="";
+	$('#form-add-car-1').submit(function(event){
+		event.preventDefault();
+		formvalue=formvalue+$('#form-add-car-1').serialize();
+		$.ajax({
+			method: 'GET',
+			url: 'add-a-car?step=2',
+			success: function(response){
+				$('#form-container').html(response);
+				currentActive(1);
+				submitForm2();
+			}
+		});
+	});
 }
 
-function submitFormProfile(){
-    let dob = document.getElementById("dateOfBirth");
-    let drivingLicense = document.getElementById("drivingLicense").files[0];
-    let city = document.getElementById("province");
-    let district = document.getElementById("district");
-    let commune = document.getElementById("ward");
-    let detail = document.getElementById("detailLocation");
+function submitForm2(){
+	$('#form-add-car-2').submit(function(event){
+		event.preventDefault();
+		getCarImage();
+		
+		formvalue=formvalue+'&'+$('#form-add-car-2').serialize();
+		$.ajax({
+			method: 'GET',
+			url: 'add-a-car?step=3',
+			success: function(response){
+				$('#form-container').html(response);
+				currentActive(2);
+				submitForm3();
+			}
+		});
+	});
+}
 
-    let xhr = new XMLHttpRequest();
+function submitForm3(){
+	$('#form-add-car-3').submit(function(event){
+		event.preventDefault();
+		formvalue=formvalue+'&'+$('#form-add-car-3').serialize();
+		$.ajax({
+			method: 'GET',
+			url: 'add-a-car?step=4',
+			success: function(response){
+				$('#form-container').html(response);
+				currentActive(4);
+				submitForm4();
+			}
+		});
+	});
+}
+
+function submitForm4(){
+	$('#btn-add-a-car').click(function(){
+		$.ajax({
+			method: 'POST',
+			url: 'add-a-car',
+			data:formvalue,
+			success: function(){
+				console.log('add successfully');
+			}
+		});
+	});
+}
+
+function currentActive(current){
+	let list = document.getElementsByClassName('progress-link');
+	for (let i = 0; i<list.length;i++){
+		list[i].className="content progress-link";
+		if (i===current){
+			list[i].className="content current progress-link";
+		}
+	}
+}
+function getCarImage(){
+	let data = new FormData();
+    data.append("fileFront",document.getElementById('file-upload-front').files[0]);
+    data.append("fileBack",document.getElementById('file-upload-back').files[0]);
+    data.append("fileLeft",document.getElementById('file-upload-left').files[0]);
+    data.append("fileRight",document.getElementById('file-upload-right').files[0]);
+    
     let xhr2 = new XMLHttpRequest();
-    let data = new FormData();
-    data.append("drivingLicense",drivingLicense);
-    console.log(data)
-    xhr.open("POST" ,"userDetail" ,true);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
-    xhr.send(encodeURI(`action=addProf&dateOfBirth=${dob.value.trim()}
-                            &location1=${city.value.trim()}&location2=${district.value.trim()}&location3=${commune.value.trim()}
-                            &detailLocation=${detail.value.trim()}`));
-
-    xhr2.open("POST" ,"userDetail?action=addLicense" ,true);
-    // xhr2.setRequestHeader("Content-Type", "application/multipart/form-data;charset=UTF-8");
+    xhr2.open("POST" ,"add-a-car" ,true);
     xhr2.send(data);
-
-    xhr.onreadystatechange = function () {
-        if (this.readyState === 4 && this.status === 200) {
-            window.location.href = "/Car_Rental_System";
-        } else if (this.readyState === 3 && this.status === 500) {
-            console.log("error")
-        }
-    };
 }

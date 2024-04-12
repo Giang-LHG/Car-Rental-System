@@ -113,7 +113,7 @@ function submitFormProfile(){
 
     xhr.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
-            window.location.href = "/Car_Rental_System/";
+            window.location.href = "/Car_Rental_System";
         } else if (this.readyState === 3 && this.status === 500) {
             console.log("error")
         }
