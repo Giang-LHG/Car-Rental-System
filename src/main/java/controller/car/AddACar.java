@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.fa.carrentalsystem.model.Car;
+import com.fa.carrentalsystem.model.CarFunctions;
 import com.fa.carrentalsystem.model.CarModel;
+import com.fa.carrentalsystem.model.CarTou;
 import com.fa.carrentalsystem.model.User;
 
 import dao.CarDAO;
@@ -123,7 +125,7 @@ public class AddACar extends HttpServlet {
 		String[] functions = request.getParameterValues("functions");
 		String basePrice = request.getParameter("base-price");
 		String deposit = request.getParameter("deposit");
-		String[] tou = request.getParameterValues("tou");
+		String[] tous = request.getParameterValues("tou");
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
 		String ownerId = user.getNationalId();
@@ -133,13 +135,23 @@ public class AddACar extends HttpServlet {
 				new CarModel(Integer.parseInt(colorId),null, null, null), 
 				new CarModel(Integer.parseInt(seatId),null, null, null), 
 				Integer.parseInt(year), 
-				Boolean.parseBoolean(transmission), Boolean.parseBoolean(fuel), 
+				Boolean.parseBoolean(transmission), 
+				Boolean.parseBoolean(fuel), 
 				Integer.parseInt(mileage), 
 				Integer.parseInt(fuelConsumption), 
-				Double.parseDouble(basePrice), Double.parseDouble(deposit), 
+				Double.parseDouble(basePrice), 
+				Double.parseDouble(deposit), 
 				fullLocation, description, null, ownerId);
 		CarDAO dao = new CarDAO();
-		System.out.println(dao.addCar(car)); 
+		dao.addCar(car);
+		for (String item : functions) {
+			CarFunctions function = new CarFunctions(licensePlate, Integer.parseInt(item));
+			dao.addFunctions(function);
+		}
+		for (String item : tous) {
+			CarTou tou = new CarTou(licensePlate, Integer.parseInt(item));
+			dao.addTou(tou);
+		}
 		
 	}
 

@@ -11,7 +11,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import com.fa.carrentalsystem.model.Car;
+import com.fa.carrentalsystem.model.CarFunctions;
 import com.fa.carrentalsystem.model.CarModel;
+import com.fa.carrentalsystem.model.CarTou;
 
 import utils.DBUtils;
 
@@ -189,7 +191,6 @@ public class CarDAO {
         		+ "     VALUES\r\n"
         		+ "           (null,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement ps = null;
-        ResultSet rs = null;
 
         try (Connection con = DBUtils.getConnection()) {
             ps = con.prepareStatement(sql);
@@ -211,13 +212,52 @@ public class CarDAO {
             ps.setString(16, "0");
             ps.setString(17, car.getImages());
             ps.setString(18, car.getOwnerId());
-            rs = ps.executeQuery();
+            ps.execute();
             return true;
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         return false;
     }
+	//thu
+		public Boolean addFunctions(CarFunctions function) {
+	        String sql = "INSERT INTO [dbo].[Cars_Functions]\r\n"
+	        		+ "           ([car_id]\r\n"
+	        		+ "           ,[function_id])\r\n"
+	        		+ "     VALUES\r\n"
+	        		+ "           (?,?)";
+	        PreparedStatement ps = null;
+	        try (Connection con = DBUtils.getConnection()) {
+		            ps = con.prepareStatement(sql);
+		            ps.setString(1, function.getCarId());
+		            ps.setInt(2, function.getFunctionId());
+		            ps.execute();
+	            return true;
+	        } catch (Exception e) {
+	            System.out.println(e.getMessage());
+	        }
+	        return false;
+	    }
+
+		//thu
+			public Boolean addTou(CarTou tou) {
+		        String sql = "INSERT INTO [dbo].[Cars_TOU]\r\n"
+		        		+ "           ([car_id]\r\n"
+		        		+ "           ,[TOU_id])\r\n"
+		        		+ "     VALUES\r\n"
+		        		+ "           (?,?)";
+		        PreparedStatement ps = null;
+		        try (Connection con = DBUtils.getConnection()) {
+			            ps = con.prepareStatement(sql);
+			            ps.setString(1, tou.getCarId());
+			            ps.setInt(2, tou.getTouId());
+			            ps.execute();
+		            return true;
+		        } catch (Exception e) {
+		            System.out.println(e.getMessage());
+		        }
+		        return false;
+		    }
 	//thu
 	private String convertDate(LocalDateTime date) {
 		return date.toString().replace("T", " ");
