@@ -23,6 +23,16 @@ public class Booking {
         this.licensePlate = licensePlate;
     }
 
+    public Booking(LocalDateTime startDateTime, LocalDateTime endDateTime, String driversInformation, Integer paymentMethod, Integer status, String customerId, String licensePlate) {
+        this.startDateTime = startDateTime;
+        this.endDateTime = endDateTime;
+        this.driversInformation = driversInformation;
+        this.paymentMethod = paymentMethod;
+        this.status = status;
+        this.customerId = customerId;
+        this.licensePlate = licensePlate;
+    }
+
     public Integer getBookingNo() {
         return bookingNo;
     }

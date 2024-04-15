@@ -135,7 +135,7 @@
                         <a
                                 style="text-decoration: none;background-color: #4CAF50;color:white"
                                 type="button"
-                                href="<%=request.getContextPath()%>/rent-a-car?licensePlate=${id}"
+                                href="<%=request.getContextPath()%>/rent-a-car?licensePlate=${id}&action=rentCar"
                         >Rent now
                         </a>
                         <a style="text-decoration: none;background-color: #4CAF50;color:white"
