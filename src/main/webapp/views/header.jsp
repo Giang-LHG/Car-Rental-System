@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
-<meta charset="UTF-8">
 <html>
 <head>
+<meta charset="UTF-8">
 <jsp:include page="head.html"></jsp:include>
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/header.css">
 </head>

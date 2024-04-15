@@ -1,23 +1,21 @@
 package com.fa.carrentalsystem.model;
 
 public class CarTou {
-    private int carId;
+    private String carId;
 
     private int touId;
 
-    private String type;
 
-    public CarTou(int carId, int touId, String type) {
+    public CarTou(String carId, int touId) {
         this.carId = carId;
         this.touId = touId;
-        this.type = type;
     }
 
-    public int getCarId() {
+    public String getCarId() {
         return carId;
     }
 
-    public void setCarId(int carId) {
+    public void setCarId(String carId) {
         this.carId = carId;
     }
 
@@ -29,11 +27,4 @@ public class CarTou {
         this.touId = touId;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
 }

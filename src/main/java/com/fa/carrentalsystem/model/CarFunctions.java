@@ -1,19 +1,19 @@
 package com.fa.carrentalsystem.model;
 
 public class CarFunctions {
-    private int carId;
+    private String carId;
     private int functionId;
 
-    public CarFunctions(int carId, int functionId) {
+    public CarFunctions(String carId, int functionId) {
         this.carId = carId;
         this.functionId = functionId;
     }
 
-    public int getCarId() {
+    public String getCarId() {
         return carId;
     }
 
-    public void setCarId(int carId) {
+    public void setCarId(String carId) {
         this.carId = carId;
     }
 
