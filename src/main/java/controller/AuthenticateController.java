@@ -56,6 +56,7 @@ public class AuthenticateController extends HttpServlet {
     protected void doGet_Logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
         HttpSession session = request.getSession();
         session.removeAttribute("user");
+        session.removeAttribute("username");
         response.sendRedirect("/Car_Rental_System");
     }
 

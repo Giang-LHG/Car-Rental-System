@@ -131,8 +131,13 @@
                         <p class="status">Available</p>
                     </div>
                     <div>
-                        <button>Rent now</button>
-                        <button>view details</button>
+                        <button
+
+                        >Rent now</button>
+                        <a
+                                type="button"
+                                href="<%=request.getContextPath()%>/car-detail?licensePlate=${id}"
+                        >view details</a>
                     </div>
                 </div>
             </c:forEach>
@@ -153,5 +158,6 @@
         window.location.href = "<%=request.getContextPath()%>/search-car";
     }
 </script>
+
 </body>
 </html>
