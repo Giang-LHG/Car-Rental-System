@@ -92,7 +92,11 @@
     </style>
 </head>
 <body>
-<jsp:include page="../../../header.jsp"></jsp:include>
+<<<<<<< HEAD
+<jsp:include page="../../header.jsp"></jsp:include>
+=======
+<jsp:include page="${pageContext.request.contextPath}/header.jsp"></jsp:include>
+>>>>>>> origin/master
 <main>
     <h2>Edit car details</h2>
     <div class="car-details">
@@ -101,6 +105,17 @@
         </div>
         <div class="car-info">
             <h3>Nissan Navara El 2017</h3>
+
+            <dialog>
+                <p>Confirm deposit</p>
+                <p>Please confirm that you have receive the deposit this booking.
+                    This will allow the customer to pick-up the car at the agreed date and time </p>
+                <button autofocus>No</button>
+                <button autofocus>Yes</button>
+            </dialog>
+            <button>Confirm deposit</button>
+
+
             <p>Ratings: &#9733;&#9733;&#9733;&#9733;&#9733; (no ratings yet)</p>
             <p>No. of rides: 0</p>
             <p>Price: 900k/day</p>
@@ -108,8 +123,8 @@
             <p>
                 Status:
                 <select>
-                    <option>Available</option>
-                    <option>Unavailable</option>
+                    <option><span style="color: green;">Available</span></option>
+                    <option><span style="color: red;">Stopped</span></option>
                 </select>
             </p>
 
@@ -117,73 +132,89 @@
     </div>
 
 
-        <ul class="tab-nav">
-            <li><a href="#" class="active">Basic information</a></li>
-            <li><a href="#">Details</a></li>
-            <li><a href="#">Pricing</a></li>
-        </ul>
+    <ul class="tab-nav">
+        <li><a href="#" class="active">Basic information</a></li>
+        <li><a href="#">Details</a></li>
+        <li><a href="#">Pricing</a></li>
+    </ul>
 
 
-        <div>
-            <table>
-                <tr>
-                    <th>License plate:</th>
-                    <th>Deposit:</th>
-                </tr>
+    <div>
+        <table>
+            <tr>
+                <th>License plate:</th>
+                <th>Deposit:</th>
+            </tr>
 
-                <tr>
-                    <th>Brand name:</th>
-                    <th>Color:</th>
-                </tr>
+            <tr>
+                <th>Brand name:</th>
+                <th>Color:</th>
+            </tr>
 
-                <tr>
-                    <th>Production year:</th>
-                    <th>Model:</th>
-                </tr>
+            <tr>
+                <th>Production year:</th>
+                <th>Model:</th>
+            </tr>
 
-                <tr>
-                    <th>Transmission:</th>
-                    <th>No. of seats:</th>
-                </tr>
+            <tr>
+                <th>Transmission:</th>
+                <th>No. of seats:</th>
+            </tr>
 
-                <tr>
-                    <th>Documents:</th>
-                    <th>Fuel:</th>
-                </tr>
+            <tr>
+                <th>Documents:</th>
+                <th>Fuel:</th>
+            </tr>
 
 
-            </table>
+        </table>
 
-            <table border="1">
-                <tr>
-                    <th>No.</th>
-                    <th>Name</th>
-                    <th>Note</th>
-                    <th>File</th>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Registration paper</td>
-                    <td>Verified</td>
-                    <td><a href="#">File/PDF</a></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Certificate of inspection</td>
-                    <td>Verified</td>
-                    <td><a href="#">File/PDF</a></td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Insurance</td>
-                    <td>Not available</td>
-                    <td>Not available</td>
-                </tr>
-            </table>
-        </div>
-        <p>Note: Please contact us if you need to update your car's basic information</p>
+        <table border="1">
+            <tr>
+                <th>No.</th>
+                <th>Name</th>
+                <th>Note</th>
+                <th>File</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Registration paper</td>
+                <td>Verified</td>
+                <td><a href="#">File/PDF</a></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Certificate of inspection</td>
+                <td>Verified</td>
+                <td><a href="#">File/PDF</a></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Insurance</td>
+                <td>Not available</td>
+                <td>Not available</td>
+            </tr>
+        </table>
+    </div>
+    <p>Note: Please contact us if you need to update your car's basic information</p>
 
 </main>
-<jsp:include page="../../../footer.jsp"></jsp:include>
+<jsp:include page="../../footer.jsp"></jsp:include>
 </body>
+<script>
+    const dialog = document.querySelector("dialog");
+    const showButton = document.querySelector("dialog + button");
+    const closeButton = document.querySelector("dialog button");
+
+    // "Show the dialog" button opens the dialog modally
+    showButton.addEventListener("click", () => {
+        dialog.showModal();
+    });
+
+    // "Close" button closes the dialog
+    closeButton.addEventListener("click", () => {
+        dialog.close();
+    });
+
+</script>
 </html>
