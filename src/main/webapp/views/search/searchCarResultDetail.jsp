@@ -49,7 +49,8 @@
                                     />
                                 </div>
                                 <div class="py-4 p-3 m-2 ">
-                                    <input type="time" name="pickuptime" placeholder="HH/MM" class="rounded py-10" required>
+                                    <input type="time" name="pickuptime" placeholder="HH/MM" class="rounded py-10"
+                                           required>
                                 </div>
                             </div>
 
@@ -87,13 +88,13 @@
     <!-- Where to find us? -->
     <div class="container">
         <h3 class="py-3 fw-bold">Search Results</h3>
-        <div class="d-flex justify-content-between" >
+        <div class="d-flex justify-content-between">
             <div class="msg">
                 <p>There're cars that are avalible for you!</p>
             </div>
             <div class="button d-flex ">
                 <div class="detail-result ">
-                    <a href="#" ><i class="fa-solid fa-table fs-4"></i></a>
+                    <a href="#"><i class="fa-solid fa-table fs-4"></i></a>
                 </div>
                 <div class="list-result px-3">
                     <a href="#" onclick="change()"><i class="fa-solid fa-table-list fs-4 text-black"></i></a>
@@ -130,14 +131,17 @@
                         <p>${i.address}</p>
                         <p class="status">Available</p>
                     </div>
-                    <div>
-                        <button
-
-                        >Rent now</button>
+                    <div class="action">
                         <a
+                                style="text-decoration: none;background-color: #4CAF50;color:white"
                                 type="button"
-                                href="<%=request.getContextPath()%>/car-detail?licensePlate=${id}"
-                        >view details</a>
+                                href="<%=request.getContextPath()%>/rent-a-car?licensePlate=${id}"
+                        >Rent now
+                        </a>
+                        <a style="text-decoration: none;background-color: #4CAF50;color:white"
+                           type="button"
+                           href="<%=request.getContextPath()%>/car-detail?licensePlate=${id}"
+                        >View details</a>
                     </div>
                 </div>
             </c:forEach>
@@ -154,8 +158,8 @@
 <jsp:include page="../footer.jsp"></jsp:include>
 
 <script>
-    function change() {
-        window.location.href = "<%=request.getContextPath()%>/search-car";
+    function change(carId) {
+        window.location.href = "<%=request.getContextPath()%>/rent-a-car?licensePlate=" + carId;
     }
 </script>
 

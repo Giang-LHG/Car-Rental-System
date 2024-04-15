@@ -65,3 +65,10 @@ main {
     border: 1px solid #ccc;
     padding: 20px;
 }
+
+/* Element | http://localhost:8080/Car_Rental_System/search-car?location=&pickupday=2024-04-30&pickuptime=12%3A00&dropoffday=2024-05-01&dropofftime=12%3A12 */
+
+.action a {
+    padding: 11px 10px 12px;
+    margin-right: 10px;
+}
