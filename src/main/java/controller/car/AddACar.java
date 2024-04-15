@@ -30,6 +30,7 @@ public class AddACar extends HttpServlet {
     private static final String STEP_2 = "views/car/add-car/add-a-car-step-2.jsp";
     private static final String STEP_3 = "views/car/add-car/add-a-car-step-3.jsp";
     private static final String STEP_4 = "views/car/add-car/add-a-car-step-4.jsp";
+    private static final String CAR_OWNER_HOME_PAGE = "views/account/user/carOwner/homePageAsCarOwner.jsp";
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -143,14 +144,16 @@ public class AddACar extends HttpServlet {
 				Double.parseDouble(deposit), 
 				fullLocation, description, null, ownerId);
 		CarDAO dao = new CarDAO();
-		dao.addCar(car);
-		for (String item : functions) {
-			CarFunctions function = new CarFunctions(licensePlate, Integer.parseInt(item));
-			dao.addFunctions(function);
-		}
-		for (String item : tous) {
-			CarTou tou = new CarTou(licensePlate, Integer.parseInt(item));
-			dao.addTou(tou);
+		if (dao.addCar(car)) {
+			for (String item : functions) {
+				CarFunctions function = new CarFunctions(licensePlate, Integer.parseInt(item));
+				dao.addFunctions(function);
+			}
+			for (String item : tous) {
+				CarTou tou = new CarTou(licensePlate, Integer.parseInt(item));
+				dao.addTou(tou);
+			}
+			request.getRequestDispatcher(CAR_OWNER_HOME_PAGE).forward(request,response);
 		}
 		
 	}
