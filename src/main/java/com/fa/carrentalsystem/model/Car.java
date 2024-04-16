@@ -22,6 +22,30 @@ public class Car {
     private int termOfUseId;
     private String images;
     private String ownerId;
+    
+	public Car(String name, String licensePlate, CarModel brand, CarModel model, CarModel color, CarModel numberOfSeat,
+			int productionYear, boolean transmissionType, boolean fuelType, int mileage, int fuelConsumption,
+			Double basePrice, Double deposit, String address, String descriptions, String images, String ownerId) {
+		super();
+		this.name = name;
+		this.licensePlate = licensePlate;
+		this.brand = brand;
+		this.model = model;
+		this.color = color;
+		this.numberOfSeat = numberOfSeat;
+		this.productionYear = productionYear;
+		this.transmissionType = transmissionType;
+		this.fuelType = fuelType;
+		this.mileage = mileage;
+		this.fuelConsumption = fuelConsumption;
+		this.basePrice = basePrice;
+		this.deposit = deposit;
+		this.address = address;
+		this.descriptions = descriptions;
+		this.images = images;
+		this.ownerId = ownerId;
+	}
+
 	public Car(String name, String licensePlate, CarModel brand, CarModel model, CarModel color, CarModel numberOfSeat,
 			int productionYear, boolean transmissionType, boolean fuelType, int mileage, int fuelConsumption,
 			Double basePrice, Double deposit, String address, String descriptions, int additionalFunctionId,

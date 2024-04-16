@@ -170,20 +170,20 @@
                                     >Address</label
                                     >
                                     <div class="py-2">
-                                        <select class="form-select" id="province" name="location1" size="1">
-                                            <option selected="selected">City</option>
+                                        <select class="form-select" id="province" name="location1" size="1" required>
+                                            <option selected="selected" disabled value>City</option>
                                         </select>
                                     </div>
 
                                     <div class="py-2">
-                                        <select class="form-select" id="district" name="location2" size="1">
-                                            <option selected >District</option>
+                                        <select class="form-select" id="district" name="location2" size="1" required>
+                                            <option selected disabled value >District</option>
                                         </select>
                                     </div>
 
                                     <div class="py-2">
-                                        <select class="form-select" id="ward" name="location3" size="1">
-                                            <option selected >Commune</option>
+                                        <select class="form-select" id="ward" name="location3" size="1" required>
+                                            <option selected disabled value>Commune</option>
                                         </select>
                                     </div>
 

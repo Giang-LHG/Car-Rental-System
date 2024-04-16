@@ -39,7 +39,7 @@
                 LOGIN USING YOUR ACCOUNT
             </div>
 
-            <form class="form" action="<%=request.getContextPath()%>/auth?action=manual" method="post">
+            <form class="form" action="<%=request.getContextPath()%>/auth?action=manual" method="post" accept-charset="UTF-8">
                 <div class="form-group">
                     <input type="text" id="loginEmail" name="loginEmail" placeholder="your email address" required>
                 </div>

@@ -71,6 +71,31 @@ public class CarModelDAO {
         }
         return null;
 	}
+
+	//thu
+	public ArrayList<CarModel> getModel(){
+		ArrayList<CarModel> list = new ArrayList<CarModel>();
+		String sql = "SELECT [id]\r\n"
+				+ "      ,[name]\r\n"
+				+ "      ,[parent_id]\r\n"
+				+ "      ,[type]\r\n"
+				+ "  FROM [CAR_RENTAL].[dbo].[Car Model]\r\n"
+				+ "  WHERE type = 'model'";
+		PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try (Connection con = DBUtils.getConnection()) {
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(getCarModel(rs));
+            }
+            return list;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+	}
 	//thu
 	public ArrayList<CarModel> getColor(int parentId){
 		ArrayList<CarModel> list = new ArrayList<CarModel>();
@@ -97,6 +122,31 @@ public class CarModelDAO {
         }
         return null;
 	}
+
+	//thu
+	public ArrayList<CarModel> getColor(){
+		ArrayList<CarModel> list = new ArrayList<CarModel>();
+		String sql = "SELECT [id]\r\n"
+				+ "      ,[name]\r\n"
+				+ "      ,[parent_id]\r\n"
+				+ "      ,[type]\r\n"
+				+ "  FROM [CAR_RENTAL].[dbo].[Car Model]\r\n"
+				+ "  WHERE type = 'color'";
+		PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try (Connection con = DBUtils.getConnection()) {
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(getCarModel(rs));
+            }
+            return list;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+	}
 	//thu
 	public ArrayList<CarModel> getSeat(int parentId){
 		ArrayList<CarModel> list = new ArrayList<CarModel>();
@@ -113,6 +163,31 @@ public class CarModelDAO {
         try (Connection con = DBUtils.getConnection()) {
             ps = con.prepareStatement(sql);
         	ps.setInt(1, parentId);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(getCarModel(rs));
+            }
+            return list;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+	}
+
+	//thu
+	public ArrayList<CarModel> getSeat(){
+		ArrayList<CarModel> list = new ArrayList<CarModel>();
+		String sql = "SELECT [id]\r\n"
+				+ "      ,[name]\r\n"
+				+ "      ,[parent_id]\r\n"
+				+ "      ,[type]\r\n"
+				+ "  FROM [CAR_RENTAL].[dbo].[Car Model]\r\n"
+				+ "  WHERE type = 'seat'";
+		PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try (Connection con = DBUtils.getConnection()) {
+            ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
                 list.add(getCarModel(rs));

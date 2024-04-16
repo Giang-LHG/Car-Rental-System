@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rent a car today!</title>
+    <title>Car details</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -66,6 +66,9 @@
             border: 1px solid #ccc;
             padding: 20px;
         }
+        .basic a{
+            padding: 8px 10px;
+        }
     </style>
 </head>
 <body>
@@ -76,10 +79,15 @@
     <h1>Car Details</h1>
     <div class="car-details">
         <img src="car-image.png" alt="Car Image">
-        <div>
+        <div class="basic">
             <h2>${Car.name}</h2>
             <input type="hidden" name="licensePlate" id="licensePlate" value="${Car.licensePlate}">
-            <button>Rent now</button>
+            <a
+                    style="text-decoration: none;background-color: #4CAF50;color:white"
+                    type="button"
+                    href="<%=request.getContextPath()%>/rent-a-car?licensePlate=${Car.licensePlate}&action=rentCar"
+            >Rent now
+            </a>
             <p class="rating">&#9733;&#9733;&#9733;&#9733;&#9733; (No ratings yet)</p>
             <p>No. of rides: ${rides}</p>
             <p>Price: ${Car.basePrice}VNĐ/day</p>

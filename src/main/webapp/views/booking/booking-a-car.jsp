@@ -1,11 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page isELIgnored="false" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="ISO-8859-1">
+	<meta charset="UTF-8">
 	<title>Book a car</title>
-	<jsp:include page="../head.html" />
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/booking/booking-a-car.css">
 </head>
 <body>
@@ -25,13 +26,16 @@
 	<div class="booking-info d-flex">
 		<div class="col-6 car-info border border-dark">
 			<div><img src="#"></div>
-			<div>Nissan Navara El 2017</div>
-			<div>Rating:
+			<div>Name: ${requestScope.car.name}</div>
+			<div>Rating:</div>
+			<div>No.of rides: ${requestScope.rides}</div>
+			<div>Price: ${requestScope.car.basePrice} $</div>
+			<div>Locations: ${requestScope.car.address}</div>
+			<div>Status:
+				<c:if test="${requestScope.status eq true }">Avaliable</c:if>
+				<c:if test="${requestScope.status eq false }">Unavaliable</c:if>
 			</div>
-			<div>No.of rides:</div>
-			<div>Price:</div>
-			<div>Locations:</div>
-			<div>Status:</div>
+			<input type="hidden" name="licensePlate" id="licensePlate" value="${requestScope.car.licensePlate}">
 		</div>
 		<div class="col-6 booking-info border border-dark">
 			<div>Booking summary</div>

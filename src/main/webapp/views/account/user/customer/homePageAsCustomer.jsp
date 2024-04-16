@@ -29,9 +29,9 @@
         </p>
       </div>
       <div class="col-md-7 border-start">
-        <div class="search bg-dark-subtle p-3">
           <h4>Find the ideal car rental for you trip</h4>
-          <form action="#" method="#">
+        <div class="search bg-dark-subtle p-3">
+          <form action="<%=request.getContextPath()%>/search-car" method="get">
             <div class="location mb-3">
               <label for="location" class="form-label fw-bold"
               >PICK-UP LOCATION</label
@@ -45,63 +45,53 @@
               />
             </div>
 
-            <div class="date mb-3 d-flex">
-              <div>
-                <label for="location" class="form-label fw-bold"
-                >PICK-UP DATE AND TIME</label
-                >
-                <input
-                        type="date"
-                        class="form-control"
-                        name="location"
-                        id="location"
-                        placeholder="DD/MM/YYYY"
-                />
+            <div class="d-flex">
+              <div class="date mb-3 d-flex">
+                <div>
+                  <label for="pickup" class="form-label fw-bold"
+                  >PICK-UP DATE AND TIME</label
+                  >
+                  <input
+                          type="date"
+                          class="form-control"
+                          name="pickupday"
+                          id="pickup"
+                          placeholder="DD/MM/YYYY"
+                          required
+                  />
+                </div>
+                <div class="py-4 p-3 m-2 ">
+                  <input type="time" name="pickuptime" placeholder="HH/MM" class="rounded py-10" required>
+                </div>
               </div>
-              <div class="py-4 p-3 m-2">
-                <select
-                        class="form-select"
-                        aria-label="Default select example"
-                >
-                  <option selected>Open this select menu</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </select>
+
+              <div class="date d-flex">
+                <div>
+                  <label for="dropoff" class="form-label fw-bold"
+                  >DROP-OFF DATE AND TIME</label
+                  >
+                  <input
+                          type="date"
+                          class="form-control"
+                          name="dropoffday"
+                          id="dropoff"
+                          placeholder="DD/MM/YYYY"
+                          required
+                  />
+                </div>
+                <div class="py-4 p-3 m-2">
+                  <input type="time" name="dropofftime" placeholder="HH/MM" class="rounded py-1">
+                </div>
               </div>
             </div>
 
-            <div class="date d-flex">
-              <div>
-                <label for="location" class="form-label fw-bold"
-                >PICK-UP DATE AND TIME</label
-                >
-                <input
-                        type="date"
-                        class="form-control"
-                        name="location"
-                        id="location"
-                        placeholder="DD/MM/YYYY"
-                />
-              </div>
-              <div class="py-4 p-3 m-2">
-                <select
-                        class="form-select"
-                        aria-label="Default select example"
-                >
-                  <option selected>Open this select menu</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </select>
-              </div>
-            </div>
             <div class="d-flex justify-content-center">
-              <input type="submit" value="Search" class="bg-primary" />
+              <input type="submit" value="Search" class="bg-primary" required/>
             </div>
           </form>
         </div>
-      </div>
+        </div>
+
     </div>
   </div>
 </section>

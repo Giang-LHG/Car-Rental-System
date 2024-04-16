@@ -2,10 +2,11 @@ package controller;
 
 import com.fa.carrentalsystem.model.Profile;
 import com.fa.carrentalsystem.model.User;
-import com.sun.xml.internal.messaging.saaj.packaging.mime.MessagingException;
+//import com.sun.xml.internal.messaging.saaj.packaging.mime.MessagingException;
 import dao.ProfileDAO;
 import dao.UserDAO;
 import utils.GmailUtils;
+import utils.StringUtils;
 import utils.ValidatorUtils;
 
 import javax.servlet.ServletException;
@@ -55,6 +56,7 @@ public class AuthenticateController extends HttpServlet {
     protected void doGet_Logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
         HttpSession session = request.getSession();
         session.removeAttribute("user");
+        session.removeAttribute("username");
         response.sendRedirect("/Car_Rental_System");
     }
 
@@ -65,11 +67,11 @@ public class AuthenticateController extends HttpServlet {
         } else if (action.equalsIgnoreCase("manual")) {
             doPost_ManualLogin(request, response);
         } else if (action.equalsIgnoreCase("register")) {
-            try {
-                doPost_Register(request, response);
-            } catch (MessagingException | GeneralSecurityException | javax.mail.MessagingException ex) {
-                log(ex.toString());
-            }
+//            try {
+//                doPost_Register(request, response);
+//            } catch (MessagingException | GeneralSecurityException | javax.mail.MessagingException ex) {
+//                log(ex.toString());
+//            }
         } else if (action.equalsIgnoreCase("forgot")) {
 
         }
@@ -155,10 +157,11 @@ public class AuthenticateController extends HttpServlet {
         }
     }
 
-    protected void doPost_Register(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, GeneralSecurityException, MessagingException,javax.mail.MessagingException {
+    protected void doPost_Register(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, GeneralSecurityException,javax.mail.MessagingException {
         //init
         UserDAO ud = new UserDAO();
         ValidatorUtils vu = new ValidatorUtils();
+        request.setCharacterEncoding("UTF-8");
         //get attributes for new user
         User temp = new User();
         GmailUtils gu = new GmailUtils();
@@ -170,6 +173,9 @@ public class AuthenticateController extends HttpServlet {
         String password = request.getParameter("registerPassword").trim();
         String rePass = request.getParameter("confirmPassword").trim();
         String roleId = request.getParameter("role").trim();
+
+        String name2 = StringUtils.convertToUTF(name);
+        System.out.println(name2);
 
         //validation
         boolean check = vu.EmailValidator(email) && vu.PasswordValidator(password);
@@ -184,7 +190,7 @@ public class AuthenticateController extends HttpServlet {
                 request.setAttribute("notify", "Registered successfully!");
 
                 //add step 1
-                temp.setName(name);
+                temp.setName(name2);
                 temp.setEmail(email);
                 temp.setPhone(phone);
                 temp.setNationalId(nationalID);
