@@ -16,7 +16,7 @@
 		      <i class='fas fa-user-circle'></i><span> Welcome, ${sessionScope.username}</span>
 		    </button>
 		    <ul class="dropdown-menu">
-		      <li><a class="dropdown-item" href="#">My Profile</a></li>
+		      <li><a class="dropdown-item" href="${pageContext.request.contextPath}/userDetail?action=editProfile">MyProfile</a></li>
 		      <li><a class="dropdown-item" href="#">My Bookings</a></li>
 		      <li><a class="dropdown-item" href="#">My Wallet</a></li>
 		      <li><a class="dropdown-item" href="${pageContext.request.contextPath}/auth?action=logout" id="logout">Log out</a></li>

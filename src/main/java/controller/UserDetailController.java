@@ -30,6 +30,8 @@ public class UserDetailController extends HttpServlet {
                 //doGet_AddProfile(req, resp);
             } else if (action.equalsIgnoreCase("addProfile")) {
                 doGet_AddProfile(req, resp);
+            }else if(action.equalsIgnoreCase("editProfile")){
+                doGet_EditProfile(req, resp);
             }
         }
 
@@ -38,6 +40,11 @@ public class UserDetailController extends HttpServlet {
     protected void doGet_AddProfile(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Get user setting - edit profile page
         request.getRequestDispatcher("/views/account/user/addProfile.jsp").forward(request, response);
+    }
+
+    protected void doGet_EditProfile(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Get user setting - edit profile page
+        request.getRequestDispatcher("/views/account/user/editProfile.jsp").forward(request, response);
     }
 
     @Override
