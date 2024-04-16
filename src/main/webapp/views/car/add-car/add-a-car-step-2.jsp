@@ -3,8 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/car/css-input-file.css">
+<%-- <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/car/css-input-file.css"> --%>
 </head>
 <body>
 
@@ -67,14 +66,14 @@
 				<p>Additional functions:</p>
 				<c:forEach var="item" items="${listFunctions}">
 					<div>
-						<input type="checkbox" name="functions" value="${item.id }"/>${item.name}</label>
+						<input type="checkbox" class="functions" name="functions" value="${item.id }"/>${item.name}</label>
 					</div>
 				</c:forEach>
 			</div>
 		</div>
 
 		<div>
-			<div>
+			<div  style="width: calc(33.33% - 20px); display: inline-block; vertical-align: top; margin-right: 20px;">
 				<h3>Front</h3>
 				<label for="file-upload" class="custom-file-upload"> <i
 					class='fas fa-upload'></i> <br> <span>Drag and drop OR
@@ -82,36 +81,36 @@
 				</label> <input id="file-upload-front" type="file" />
 			</div>
 
-			<div>
-				<h3>Back</h3>
-				<label for="file-upload" class="custom-file-upload"> <i
-					class='fas fa-upload'></i> <br> <span>Drag and drop OR
-						Select File</span> <br> <span>Select File</span>
-				</label> <input id="file-upload-back" type="file" />
-			</div>
+<!-- 			<div> -->
+<!-- 				<h3>Back</h3> -->
+<!-- 				<label for="file-upload" class="custom-file-upload"> <i -->
+<!-- 					class='fas fa-upload'></i> <br> <span>Drag and drop OR -->
+<!-- 						Select File</span> <br> <span>Select File</span> -->
+<!-- 				</label> <input id="file-upload-back" type="file" /> -->
+<!-- 			</div> -->
 
-			<div>
-				<h3>Left</h3>
-				<label for="file-upload" class="custom-file-upload"> <i
-					class='fas fa-upload'></i> <br> <span>Drag and drop OR
-						Select File</span> <br> <span>Select File</span>
-				</label> <input id="file-upload-left" type="file" />
-			</div>
+<!-- 			<div> -->
+<!-- 				<h3>Left</h3> -->
+<!-- 				<label for="file-upload" class="custom-file-upload"> <i -->
+<!-- 					class='fas fa-upload'></i> <br> <span>Drag and drop OR -->
+<!-- 						Select File</span> <br> <span>Select File</span> -->
+<!-- 				</label> <input id="file-upload-left" type="file" /> -->
+<!-- 			</div> -->
 
-			<div>
-				<h3>Right</h3>
-				<label for="file-upload" class="custom-file-upload"> <i
-					class='fas fa-upload'></i> <br> <span>Drag and drop OR
-						Select File</span> <br> <span>Select File</span>
-				</label> <input id="file-upload-right" type="file" />
-			</div>
+<!-- 			<div> -->
+<!-- 				<h3>Right</h3> -->
+<!-- 				<label for="file-upload" class="custom-file-upload"> <i -->
+<!-- 					class='fas fa-upload'></i> <br> <span>Drag and drop OR -->
+<!-- 						Select File</span> <br> <span>Select File</span> -->
+<!-- 				</label> <input id="file-upload-right" type="file" /> -->
+<!-- 			</div> -->
 		</div>
 
 		<p>Please include full 4 images of your vehicle</p>
 		<p>File type: jpg, jpeg, png, gif</p>
 
 		<div>
-			<button type="button" class="cancel">Cancel</button>
+			<button type="button" class="cancel" id="btn-cancel" >Cancel</button>
 			<button type="submit" class="next">Next</button>
 		</div>
 		</form>

@@ -26,6 +26,7 @@
 			</ul>
 		</div>
 	</div>
+	<button onclick="random()">Random</button>
 	<div id="form-container">
 
 	</div>

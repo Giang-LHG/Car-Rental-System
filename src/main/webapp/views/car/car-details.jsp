@@ -75,7 +75,7 @@
 <main>
     <h1>Car Details</h1>
     <div class="car-details">
-        <img src="car-image.png" alt="Car Image">
+        <img src="${Car.images}" alt="Car Image">
         <div>
             <h2>${Car.name}</h2>
             <input type="hidden" name="licensePlate" id="licensePlate" value="${Car.licensePlate}">

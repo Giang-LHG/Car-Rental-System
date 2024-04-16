@@ -10,7 +10,7 @@
             <div style="margin-right: 20px;">
                 <button style="padding: 5px 10px; border: none; border-radius: 4px; cursor: pointer; background-color: #ccc; color: #333; margin-right: 10px;">&lt;</button>
                 <div style="width: 300px; height: 200px; border: 1px solid #ccc; border-radius: 4px; overflow: hidden;">
-                    <img src="placeholder.png" alt="Preview Image" style="width: 100%; height: 100%; object-fit: cover;">
+                    <img src="#" alt="Preview Image" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
                 <button style="padding: 5px 10px; border: none; border-radius: 4px; cursor: pointer; background-color: #ccc; color: #333; margin-left: 10px;">&gt;</button>
             </div>
@@ -42,7 +42,7 @@
     </div>
 
     <div style="margin-top: 20px; display: flex; justify-content: space-between;">
-        <button type="button" class="cancel" style="padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; background-color: #ccc; color: #333; margin-right: 10px;">Cancel</button>
+        <button type="button" class="cancel" id="btn-cancel" style="padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; background-color: #ccc; color: #333; margin-right: 10px;">Cancel</button>
         <button type="submit" class="submit" id="btn-add-a-car" style="padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; background-color: #4caf50; color: #fff;">Submit</button>
     </div>
 </main>

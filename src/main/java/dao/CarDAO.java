@@ -258,6 +258,22 @@ public class CarDAO {
 		        }
 		        return false;
 		    }
+		//thu
+		public void addImage(String images,String license_plate) {
+			// Init
+		    PreparedStatement ps = null;
+		    String getUserLoginSQL = "  UPDATE [Car] set images = ? where license_plate = ?";
+		    // Connect to db
+		    try ( Connection con = DBUtils.getConnection()) {
+		    	ps = con.prepareStatement(getUserLoginSQL);
+		    	ps.setString(1, images);
+		    	ps.setString(2, license_plate);
+		    	ps.executeUpdate();
+		    } catch (Exception e) {
+		    	System.out.println(e.getMessage());
+		    }
+		}
+
 	//thu
 	private String convertDate(LocalDateTime date) {
 		return date.toString().replace("T", " ");
