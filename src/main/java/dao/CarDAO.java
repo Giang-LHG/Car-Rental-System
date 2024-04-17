@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.fa.carrentalsystem.model.Car;
 import com.fa.carrentalsystem.model.CarFunctions;
@@ -42,6 +43,7 @@ public class CarDAO {
 	    Car car = new Car(name, licensePlate, brand, model, color, numberOfSeat, productionYear, transmissionType, fuelType, mileage, fuelConsumption, basePrice, deposit, address, descriptions, additionalFunctionId, termOfUseId, images, ownerId);
         return car;
     }
+
 	//thu
 	private Car getCarFromResultSet(ResultSet rs) throws SQLException{
 	    String licensePlate = rs.getString("license_plate");
@@ -104,6 +106,55 @@ public class CarDAO {
         }
         return null;
     }
+
+	public List<Car> getCarOwner(String owner_id) {
+		List<Car> listC = new ArrayList<>();
+		String sql = "SELECT [Car].[name] \n" +
+				"        \t\t  ,[license_plate] \n" +
+				"        \t\t  ,[brand_id] \n" +
+				"        \t\t  ,[model_id] \n" +
+				"        \t\t  ,[color_id] \n" +
+				"        \t\t  ,[number_of_seats_id] \n" +
+				"        \t\t  ,[production_year] \n" +
+				"        \t\t  ,[transmission_type] \n" +
+				"        \t\t  ,[fuel_type] \n" +
+				"        \t\t  ,[mileage] \n" +
+				"        \t\t  ,[fuel-consumption] \n" +
+				"        \t\t  ,[base_price] \n" +
+				"        \t\t  ,[deposit] \n" +
+				"        \t\t  ,[Car].[address] \n" +
+				"        \t\t  ,[description] \n" +
+				"        \t\t  ,[additional_funtion_id] \n" +
+				"        \t\t  ,[term_of_use_id] \n" +
+				"        \t\t  ,[images] \n" +
+				"        \t\t  ,[owner_id] \n" +
+				"        \t\t  ,cm1.[name][brand], \n" +
+				"        \t\t  cm2.[name][model], \n" +
+				"        \t\t  cm3.[name][color], \n" +
+				"        \t\t  cm4.[name][seat], \n" +
+				"        \t\t  u.name[userName] \n" +
+				"        \t\t  FROM [CAR_RENTAL].[dbo].[Car] \n" +
+				"        \t\t  JOIN [CAR_RENTAL].[dbo].[Car Model] cm1 ON cm1.id=[Car].[brand_id]  \n" +
+				"        \t\t  JOIN [CAR_RENTAL].[dbo].[Car Model] cm2 ON cm2.id=[Car].[model_id]  \n" +
+				"        \t\t  JOIN [CAR_RENTAL].[dbo].[Car Model] cm3 ON cm3.id=[Car].[color_id]  \n" +
+				"        \t\t  JOIN [CAR_RENTAL].[dbo].[Car Model] cm4 ON cm4.id=[Car].[number_of_seats_id]  \n" +
+				"        \t\t  JOIN [CAR_RENTAL].[dbo].[User] u ON u.national_id=[Car].[owner_id] \n" +
+				"        \t\t  WHERE [owner_id]  = ?";
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+
+		try (Connection con = DBUtils.getConnection()) {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, owner_id);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				listC.add(getDetailCarFromResultSet(rs));
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return listC;
+	}
 
 	//thu
 	public ArrayList<Car> searchCar(String address,LocalDateTime pickUpDate,LocalDateTime dropOffDate, int offset, int fetch) {
@@ -266,9 +317,14 @@ public class CarDAO {
 	}
 	public static void main(String[] args) {
 		CarDAO dao = new CarDAO();
-		DateTimeFormatter f = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-		LocalDateTime dateTime = LocalDateTime.from(f.parse("2024-04-08 00:00:00"));
-		LocalDateTime dateTime2 = LocalDateTime.from(f.parse("2024-04-09 00:00:00"));
-		System.out.println(dao.searchCar("",dateTime, dateTime2, 0, 5));
+//		DateTimeFormatter f = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+//		LocalDateTime dateTime = LocalDateTime.from(f.parse("2024-04-08 00:00:00"));
+//		LocalDateTime dateTime2 = LocalDateTime.from(f.parse("2024-04-09 00:00:00"));
+//		System.out.println(dao.searchCar("",dateTime, dateTime2, 0, 5));
+		List<Car> list = dao.getCarOwner("031203010462");
+		for (Car c: list
+			 ) {
+			System.out.println(c);
+		}
 	}
 }

@@ -94,9 +94,9 @@
     <div class="container">
         <h3 class="p-3">Make money on your car right away</h3>
         <div class="list-car d-flex justify-content-center">
-            <button type="button" class="px-5 py-2 bg-info">
+            <a href="${pageContext.request.contextPath}/list-carowner?id=${sessionScope.user.nationalId}" class="px-5 py-2 bg-info">
                 List Your Car Today
-            </button>
+            </a>
         </div>
     </div>
 </section>
