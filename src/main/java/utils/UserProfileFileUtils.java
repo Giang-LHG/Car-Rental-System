@@ -66,4 +66,49 @@ public class UserProfileFileUtils {
         }
         return null;
     }
+    public static String uploadImage(String UPLOAD_DIR, HttpServletRequest request,String name) throws IOException {
+        String fileName = null;
+        try {
+            List<Part> parts = (List<Part>) request.getParts();
+            for (Part part : parts) {
+                if (part.getName().equalsIgnoreCase(name)) {
+                    fileName = getPredefinedUserImageName(part);
+                    if (fileName == null || fileName.equals("")) return null;
+                    String applicationPath = request.getServletContext().getRealPath("");
+                    String basePath = applicationPath + File.separator + UPLOAD_DIR + File.separator;
+                    Files.createDirectories(Paths.get(basePath));
+                    FileUtils.cleanDirectory(new File(basePath));
+                    InputStream inputStream = null;
+                    OutputStream outputStream = null;
+                    try {
+                    	fileName = basePath+fileName;
+                        File outputFilePath = new File(fileName);
+                        inputStream = part.getInputStream();
+                        outputStream = Files.newOutputStream(outputFilePath.toPath());
+                        int read = 0;
+                        final byte[] bytes = new byte[1024];
+                        while ((read = inputStream.read(bytes)) != -1) {
+                            outputStream.write(bytes, 0, read);
+                        }
+                    } catch (IOException ex) {
+                        fileName = null;
+                        System.out.println(ex);
+                    } finally {
+                        if (outputStream != null) {
+                            outputStream.close();
+                        }
+                        if (inputStream != null) {
+                            inputStream.close();
+                        }
+                    }
+                    System.out.println(fileName);
+                    return fileName;
+                }
+            }
+        } catch (ServletException | IOException | StringIndexOutOfBoundsException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+        return null;
+    }
 }

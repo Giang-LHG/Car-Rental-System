@@ -24,7 +24,7 @@
         <div style="display: flex; flex-wrap: wrap;">
         	<c:forEach var="item" items="${listTOU}">
 	            <div style="margin-right: 20px;">
-	                <input type="checkbox" name="tou" value="${item.id }">
+	                <input type="checkbox" class="tou" name="tou" value="${item.id }">
 	                ${item.name}
 <!-- 	                <label for="no-smoking">No smoking</label> -->
 	            </div>
@@ -37,7 +37,7 @@
     </div>
 
     <div style="margin-top: 20px; display: flex; justify-content: space-between;">
-        <button type="button" class="cancel" style="padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; background-color: #ccc; color: #333; margin-right: 10px;">Cancel</button>
+        <button type="button" class="cancel" id="btn-cancel" style="padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; background-color: #ccc; color: #333; margin-right: 10px;">Cancel</button>
         <button type="submit" class="next" style="padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; background-color: #4caf50; color: #fff;">Next</button>
     </div>
     </form>

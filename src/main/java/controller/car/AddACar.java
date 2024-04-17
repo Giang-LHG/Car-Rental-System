@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javax.mail.Session;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,13 +16,17 @@ import com.fa.carrentalsystem.model.CarFunctions;
 import com.fa.carrentalsystem.model.CarModel;
 import com.fa.carrentalsystem.model.CarTou;
 import com.fa.carrentalsystem.model.User;
+import com.google.api.client.util.StringUtils;
 
 import dao.CarDAO;
 import dao.CarModelDAO;
+import dao.ProfileDAO;
+import utils.UserProfileFileUtils;
 
 /**
  * Servlet implementation class AddACar
  */
+@MultipartConfig(fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 5, maxRequestSize = 1024 * 1024 * 5 * 5)
 @WebServlet("/add-a-car")
 public class AddACar extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -108,54 +113,68 @@ public class AddACar extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String licensePlate = request.getParameter("licensePlate");
-		String year = request.getParameter("productionYear");
-		String brandId = request.getParameter("brand");
-		String modelId = request.getParameter("model");
-		String colorId = request.getParameter("color");
-		String seatId = request.getParameter("seats");
-		String transmission = request.getParameter("transmission");
-		String fuel = request.getParameter("fuel");
-		String mileage = request.getParameter("mileage");
-		String province = request.getParameter("location1");
-		String district = request.getParameter("location2");
-		String ward = request.getParameter("location3");
-		String detailLocation = request.getParameter("detailLocation");
-		String fullLocation = province+" "+district+" "+ward+" "+detailLocation;
-		String fuelConsumption = request.getParameter("fuel-consumption");
-		String description = request.getParameter("description");
-		String[] functions = request.getParameterValues("functions");
-		String basePrice = request.getParameter("base-price");
-		String deposit = request.getParameter("deposit");
-		String[] tous = request.getParameterValues("tou");
-		HttpSession session = request.getSession();
-		User user = (User) session.getAttribute("user");
-		String ownerId = user.getNationalId();
-		Car car = new Car(null, licensePlate, 
-				new CarModel(Integer.parseInt(brandId),null, null, null),
-				new CarModel(Integer.parseInt(modelId),null, null, null), 
-				new CarModel(Integer.parseInt(colorId),null, null, null), 
-				new CarModel(Integer.parseInt(seatId),null, null, null), 
-				Integer.parseInt(year), 
-				Boolean.parseBoolean(transmission), 
-				Boolean.parseBoolean(fuel), 
-				Integer.parseInt(mileage), 
-				Integer.parseInt(fuelConsumption), 
-				Double.parseDouble(basePrice), 
-				Double.parseDouble(deposit), 
-				fullLocation, description, null, ownerId);
-		CarDAO dao = new CarDAO();
-		if (dao.addCar(car)) {
-			for (String item : functions) {
-				CarFunctions function = new CarFunctions(licensePlate, Integer.parseInt(item));
-				dao.addFunctions(function);
+		String action = request.getParameter("action");
+		if (action!=null) {
+            String uploadDir = "media/images/" + licensePlate;
+            String imageLink = UserProfileFileUtils.uploadImage(uploadDir,request,"fileFront");
+    		doPost_AddImage(request, response, imageLink, licensePlate);
+        }
+		try {
+
+			String year = request.getParameter("productionYear");
+			String brandId = request.getParameter("brand");
+			String modelId = request.getParameter("model");
+			String colorId = request.getParameter("color");
+			String seatId = request.getParameter("seats");
+			String transmission = request.getParameter("transmission");
+			String fuel = request.getParameter("fuel");
+			String mileage = request.getParameter("mileage");
+			String province = request.getParameter("location1");
+			String district = request.getParameter("location2");
+			String ward = request.getParameter("location3");
+			String detailLocation = request.getParameter("detailLocation");
+			String fullLocation = province+" "+district+" "+ward+" "+detailLocation;
+			String fuelConsumption = request.getParameter("fuel-consumption");
+			String description = request.getParameter("description");
+			String[] functions = request.getParameterValues("functions");
+			String basePrice = request.getParameter("base-price");
+			String deposit = request.getParameter("deposit");
+			String[] tous = request.getParameterValues("tou");
+			HttpSession session = request.getSession();
+			User user = (User) session.getAttribute("user");
+			String ownerId = user.getNationalId();
+			Car car = new Car(null, licensePlate, 
+					new CarModel(Integer.parseInt(brandId),null, null, null),
+					new CarModel(Integer.parseInt(modelId),null, null, null), 
+					new CarModel(Integer.parseInt(colorId),null, null, null), 
+					new CarModel(Integer.parseInt(seatId),null, null, null), 
+					Integer.parseInt(year), 
+					Boolean.parseBoolean(transmission), 
+					Boolean.parseBoolean(fuel), 
+					Integer.parseInt(mileage), 
+					Integer.parseInt(fuelConsumption), 
+					Double.parseDouble(basePrice), 
+					Double.parseDouble(deposit), 
+					fullLocation, description, null, ownerId);
+			CarDAO dao = new CarDAO();
+			if (dao.addCar(car)) {
+				for (String item : functions) {
+					CarFunctions function = new CarFunctions(licensePlate, Integer.parseInt(item));
+					dao.addFunctions(function);
+				}
+				for (String item : tous) {
+					CarTou tou = new CarTou(licensePlate, Integer.parseInt(item));
+					dao.addTou(tou);
+				}
 			}
-			for (String item : tous) {
-				CarTou tou = new CarTou(licensePlate, Integer.parseInt(item));
-				dao.addTou(tou);
-			}
-			request.getRequestDispatcher(CAR_OWNER_HOME_PAGE).forward(request,response);
+		}catch (Exception e) {
+			System.out.println(e);
 		}
-		
+		request.getRequestDispatcher(CAR_OWNER_HOME_PAGE).forward(request,response);
 	}
 
+    protected void doPost_AddImage(HttpServletRequest request, HttpServletResponse response,String imageLink,String licensePlate) throws IOException, ServletException {
+        CarDAO dao = new CarDAO();
+        dao.addImage(imageLink, licensePlate);
+    }
 }
