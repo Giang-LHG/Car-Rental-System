@@ -20,8 +20,8 @@
 			 <li class="content progress-link current">
 			   <div class="content" id="step-1">Step 1: Basic</div>
 			 </li>
-			 <li class="content progress-link"><div class="content" id="step-2">Step 2: Payment</div></li>
-			 <li class="content progress-link"><div class="content" id="step-3">Step 3: Payment</div></li>
+			 <li class="content progress-link"><div class="content" id="step-2">Step 2: Detail</div></li>
+			 <li class="content progress-link"><div class="content" id="step-3">Step 3: Pricing</div></li>
 			  <li class="content progress-link"><div class="content" id="step-4">Step 4: Finish</div></li>
 			</ul>
 		</div>

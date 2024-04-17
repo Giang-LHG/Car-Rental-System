@@ -31,7 +31,7 @@ public class SearchCarController extends HttpServlet {
         DateTimeFormatter f = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         LocalDateTime pickUp  = LocalDateTime.from(f.parse(pickUpDay +" "+ pickUpTime));
         LocalDateTime dropOff = LocalDateTime.from(f.parse(dropOffDay +" "+ dropOffTime));
-        ArrayList<Car> listCar = carDao.searchCar(location, pickUp, dropOff, 0, 5);
+        ArrayList<Car> listCar = carDao.searchCar(location, pickUp, dropOff, 0, 10);
 
         request.setAttribute("listC", listCar);
         request.getRequestDispatcher("views/search/searchCarResultDetail.jsp").forward(request,response);

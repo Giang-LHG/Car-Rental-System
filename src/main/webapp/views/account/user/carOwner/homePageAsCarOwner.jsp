@@ -94,7 +94,7 @@
     <div class="container">
         <h3 class="p-3">Make money on your car right away</h3>
         <div class="list-car d-flex justify-content-center">
-            <a href="#" class="px-5 py-2 bg-info">
+            <a href="add-a-car" class="px-5 py-2 bg-info">
                 List Your Car Today
             </a>
         </div>

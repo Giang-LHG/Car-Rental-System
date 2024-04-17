@@ -95,6 +95,10 @@ function submitForm4(){
     	data.append('licensePlate',value.get('licensePlate'));
 	    xhr2.open("POST" ,"add-a-car?action=addImage" ,true);
 	    xhr2.send(data);
+		// window.location.href = "list-carowner";
+	});
+	$('#btn-cancel').click(function(){
+		window.location.href = "list-carowner";
 	});
 }
 

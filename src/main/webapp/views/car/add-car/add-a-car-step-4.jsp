@@ -46,6 +46,5 @@
         <button type="submit" class="submit" id="btn-add-a-car" style="padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; background-color: #4caf50; color: #fff;">Submit</button>
     </div>
 </main>
-<jsp:include page="../../footer.jsp"></jsp:include>
 </body>
 </html>

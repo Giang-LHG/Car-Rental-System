@@ -16,11 +16,11 @@ import com.fa.carrentalsystem.model.CarFunctions;
 import com.fa.carrentalsystem.model.CarModel;
 import com.fa.carrentalsystem.model.CarTou;
 import com.fa.carrentalsystem.model.User;
-import com.google.api.client.util.StringUtils;
 
 import dao.CarDAO;
 import dao.CarModelDAO;
 import dao.ProfileDAO;
+import utils.StringUtils;
 import utils.UserProfileFileUtils;
 
 /**
@@ -154,8 +154,10 @@ public class AddACar extends HttpServlet {
 					Integer.parseInt(mileage), 
 					Integer.parseInt(fuelConsumption), 
 					Double.parseDouble(basePrice), 
-					Double.parseDouble(deposit), 
-					fullLocation, description, null, ownerId);
+					Double.parseDouble(deposit),
+					StringUtils.decodeURL(fullLocation), description, null, ownerId);
+			System.out.println(fullLocation);
+			System.out.println(StringUtils.decodeURL(fullLocation));
 			CarDAO dao = new CarDAO();
 			if (dao.addCar(car)) {
 				for (String item : functions) {
